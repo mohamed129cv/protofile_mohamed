@@ -1,0 +1,52 @@
+<section class="project_page" [ngClass]="{'dark' : bg == 'dark'} ">
+  <header>
+    <input class="form-control" [(ngModel)]="searchWord" type="text" placeholder="Search projects..." />
+    <ul class="search_result" *ngIf="searchWord !==''">
+      @for (res of projects ; track $index) {
+        @if (res.project_title.toLocaleLowerCase().trim().includes(searchWord.toLocaleLowerCase().trim())) {
+
+          <li (click)="searchWord = res.project_title">{{res.project_title}}</li>
+        }@else {
+          <li>There is no project by that name.</li>
+        }
+      }
+    </ul>
+    <span>
+      <i [ngClass]="
+    {'fa-pen-to-square fa-solid': !adminMode  ,'fa-regular fa-floppy-disk': adminMode}"
+        (click)=" adminMode ? saveData() : login()"></i>
+    </span>
+  </header>
+  <article class="type">
+    <ul>
+      <li [ngClass]="{'active' : typeMode == 'all' }" (click)="getProjects(); typeMode = 'all' ">all</li>
+      @for (type of types ; track $index) {
+      <li  (click)="typeMode = type ; filterByType(type) " [ngClass]="{'active' : typeMode == type}">{{type}}</li>
+      }
+    </ul>
+  </article>
+  <h2 class="text-primary mt-5 text-center" [ngClass]="{'text-white ' : bg == 'dark'} ">Our projects</h2>
+  <p class="text-muted mb-3  text-center" [ngClass]="{'text-white-50 ' : bg == 'dark'} ">Our most important projects</p>
+  <article class="projects">
+    <app-projects-cart [projcets]="projects |search : searchWord" [adminMode]="adminMode"></app-projects-cart>
+  </article>
+
+
+  <!--! login section  -->
+  <section class="login hidden" #loginSection>
+    <form [formGroup]="singUp" (ngSubmit)="submitLogin()" class="hidden" #popert>
+      <i class="fa-solid fa-circle-xmark exit" (click)="closing()"></i>
+      <h3>Accessing admin mode</h3>
+      <label class="form-label" for="name">Name</label>
+      <input class="form-control" type="text" id="name" placeholder="Enter Your Name ...." formControlName="user">
+      <label class="form-label" for="password">
+        Password
+      </label>
+      <div class="password">
+        <input class="form-control" [type]="showPassword ? 'text' : 'password'  "  #passwordInput id="password" placeholder="Enter your Password ..." formControlName="pass">
+        <span (click)="toggleInputToPassword()"> <i class="fa-solid " [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" ></i></span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+</section>

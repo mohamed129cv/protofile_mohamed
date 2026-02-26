@@ -1,0 +1,50 @@
+.navbar-brand {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.navbar-brand img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.nav-item a {
+  transition: var(--transition);
+  border-bottom: 0.3rem solid transparent;
+  position: relative;
+}
+
+.nav-item:hover a {
+  color: var(--main-color);
+}
+.nav-item a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 0.3rem;
+  background-color: var(--main-color);
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  transition: var(--transition);
+}
+.nav-item:hover a::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-item a {
+  text-transform: capitalize;
+}
+.nav-item a.active {
+  color: var(--main-color);
+
+}
+
+.navbar.dark .nav-item a::after {
+  background-color: var(--main-color) !important;
+}
+.navbar.dark .nav-item:hover a,
+.navbar.dark .nav-item a.active {
+  color: var(--main-color) !important;
+}

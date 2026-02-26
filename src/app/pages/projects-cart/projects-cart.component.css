@@ -1,0 +1,274 @@
+.card_page {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.project_card {
+  width: 100%;
+  height: 350px;
+  position: relative;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.project_card .card-img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+.project_card .card-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.3rem .3rem 0rem 1.9rem;
+  object-fit: cover;
+  anchor-name: --img;
+}
+.card .card-title {
+  color: var(--dark);
+  transition: var(--transition);
+}
+.card .card-title:hover {
+  color: var(--main-color);
+}
+ .card .tools {
+  width: 40%;
+  height: 100%;
+  border-radius: .3rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top : 0 ;
+  right: -40px;
+  opacity: 0;
+  pointer-events: none;
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+  z-index: 1;
+  transition: var(--transition);
+}
+.card:hover .tools{
+  opacity: 1;
+  right: 0%;
+  pointer-events: auto;
+}
+.card .tools i {
+  color: var(--color-text);
+  transition: var(--transition);
+}
+.card .tools i:hover {
+  color: var(--main-color);
+}
+.project_card .rate {
+  display: inline;
+  position: absolute;
+  padding: 0.3rem;
+  background-color: var(--main-color);
+  color: var(--color-text);
+  border-radius: 20px;
+  position-anchor: --img;
+  bottom: calc(anchor(top) - 50px);
+  right: calc(anchor(left) - 60px);
+}
+
+/** كرت اضافة المزيد  */
+.add_new_project {
+  height: 350px;
+  border-radius: 0.4rem;
+  background-color: var(--color-text);
+  box-shadow: var(--shadow);
+  padding: 0.1rem;
+  display: inline-grid;
+  place-items: center;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+}
+
+.add_new_project span {
+  width: 100%;
+  height: 0;
+  background-color: var(--color-muted);
+  border-radius: 0.4rem;
+  font-size: 2rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  text-align: center;
+  transition: var(--transition);
+  opacity: 0;
+}
+.add_new_project span i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+}
+
+.add_new_project span i {
+  color: var(--main-color);
+}
+.add_new_project:hover {
+  color: var(--main-color);
+  transform: translateY(-15px);
+}
+
+.add_new_project:hover span {
+  height: 100%;
+  top: 0;
+  opacity: 0.5;
+  color: var(--main-color);
+}
+
+/** add type  */
+/**ببرت اضافة مشروع جديد  */
+.add_type {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: grid;
+  place-items: center;
+  transition: var(--transition);
+}
+.add_type.hidden {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.add_type.show {
+  z-index: 1;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.add_type form {
+  width: 90%;
+  margin: auto;
+  height: 80vh;
+  overflow-y: auto;
+  padding: clamp(1.2rem, 1vw + 0.8rem, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-text);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.add_type .fa-circle-xmark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.4rem;
+  color: var(--red);
+  cursor: pointer;
+}
+.add_type form h2 {
+  color: var(--main-color);
+  text-transform: capitalize;
+}
+.flid .del {
+  color: var(--red);
+  border-color: var(--red) ;
+  /* margin-inline:.3rem ; */
+  transition: var(--transition);
+}
+
+.flid .del:hover {
+  background-color: var(--red);
+  color: var(--color-text);
+}
+.add_type  .date{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+}
+.add_type  .date div{
+  width: 43%;
+}
+.media,
+.imgBox{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.imgBox input{
+  width: 75%;
+  height: 35px;
+}
+.media_img {
+  width: 75%;
+}
+
+.media img ,
+.imgBox img {
+  width: 20%;
+  height: 150px;
+  border-radius: .7rem;
+}
+@media screen  and (max-width:782px){
+  .imgBox{
+    flex-direction:column ;
+  }
+  .imgBox input{
+    width: 100%;
+  }
+  .imgBox img {
+    width: 100%;
+  }
+  .media{
+    flex-direction: column;
+  }
+}
+/*& dark mode  */
+.card_page.dark .lr {
+  background-color: var(--bg4);
+}
+.card_page.dark .card {
+  background-color: var(--bg4);
+  color: var(--color-text);
+}
+.card_page.dark .card .card-title {
+  color: var(--color-text);
+}
+.card_page.dark .card .card-title:hover {
+  color: var(--main-color);
+}
+
+.card_page.dark .add_new_project {
+  background-color: var(--bg4);
+  color: var(--color-text) !important;
+}
+.card_page.dark .add_new_project span i {
+  color: var(--main-color);
+}
+.card_page.dark .add_type form {
+  background-color: var(--bg4);
+}
+.card_page.dark .add_type form h2  {
+  color: var(--main-color) !important;
+}
+.card_page.dark .add_type form label ,.card_page.dark .add_type form h6 {
+  color: var(--color-text);
+}
+.card_page.dark .project_card .rate {
+  background-color: var(--main-color);
+}
+
+.alert.alert-danger {
+  width: 50%;
+}
