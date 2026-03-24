@@ -18,17 +18,35 @@
 
   --transition: 0.5s all;
   --shadow:
-    0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.3),
-    0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.4);
+    0rem 4px 13px rgba(0, 0, 0, 0.13),
+    0rem 6px 15px rgba(0, 0, 0, 0.17);
 }
+@font-face {
+  font-family: 'Raleway';
+  src: url('./assets/fonts/raleway/Raleway-VariableFont_wght.ttf');
+}
+@font-face {
+
+  font-family: 'semi';
+  src: url('./assets/fonts/semi/SairaSemiCondensed-Regular.ttf');
+  font-weight: 900;
+}
+
+h1 , h2 ,h3 , h4 , h5 , h6   {
+  font-family: 'Raleway';
+} 
+p , span , a{
+  font-family: 'semi';
+} 
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
 ::-webkit-scrollbar {
   appearance: none;
-  background-color: #f2f2f2;
+  background-color: var(--color-muted);
   width: 0.8rem;
 }
 ::-webkit-scrollbar-thumb {
@@ -41,6 +59,14 @@ body {
   }
   to {
     transform: translateY(5px);
+  }
+}
+@keyframes bounce2 {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(20px);
   }
 }
 #toast-container {

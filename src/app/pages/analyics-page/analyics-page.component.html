@@ -1,74 +1,139 @@
 <section class="analytics-page " [ngClass]="{'dark':bg=='dark'}">
-  <div class="container">
-    <section class="contact">
-      <aside>
-        <ul>
-          <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'bar'}"
-            (click)=" updateChart('bar')">
-            Table</li>
-          <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'views'}" (click)="updateChart('views')">
-            Views</li>
-          <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'interactions'}"
-            (click)="updateChart('interactions')">Interactions</li>
-          <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'clicks'}"
-            (click)="updateChart('clicks')">
-            Link Clicks</li>
-          <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'visits'}"
-            (click)="updateChart('visits')">
-            Page Visits</li>
-          <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'followers'}"
-            (click)=" updateChart('followers')">Followers</li>
-
-        </ul>
-      </aside>
-
-      <article class="contact_chart">
-        <div class="table-responsive" >
-          <table class="table table-striped " *ngIf="activeChart == 'bar'" [ngClass]="{'table-dark': bg == 'dark' }">
-            <thead>
-              <tr>
-                <td class="table-active fade-up" appFadeUp>index</td>
-                <td class="fade-up" appFadeUp>Views</td>
-                <td class="fade-up" appFadeUp>Interactions</td>
-                <td class="fade-up" appFadeUp>Link Clicks</td>
-                <td class="fade-up" appFadeUp>Page Visits</td>
-                <td class="fade-up" appFadeUp>Followers</td>
-              </tr>
-            </thead>
-            <tbody>
-              @for (r of project.results; track $index) {
-              <tr>
-                <td class="table-active fade-up" appFadeUp>{{$index + 1}}</td>
-                <td class="fade-up" appFadeUp>{{r.view}}</td>
-                <td class="fade-up" appFadeUp>{{r.interaction}}</td>
-                <td class="fade-up" appFadeUp>{{r.Click}}</td>
-                <td class="fade-up" appFadeUp>{{r.visit_page}} </td>
-                <td class="fade-up" appFadeUp>{{r.New_follower}}</td>
-              </tr>
-              }
-            </tbody>
-          </table>
-          <apx-chart class="apx-chart" [labels]="chartOptions.labels!" [series]="chartOptions.series!" [chart]="chartOptions.chart!" [xaxis]="chartOptions.xaxis!"
-          [yaxis]="chartOptions.yaxis!" [colors]="chartOptions.colors!" [dataLabels]="barChartOptions.dataLabels!"
-          [stroke]="barChartOptions.stroke!" [plotOptions]="barChartOptions.plotOptions!"
-          [tooltip]="barChartOptions.tooltip!" [fill]="barChartOptions.fill!">
-        </apx-chart>
+  <section class="contact">
+    <div class="overlay" *ngIf="isOpen" (click)="toggleAside()"></div>
+    <span class="btn_bars" (click)="toggleAside()"><i class="fa-solid fa-bars"></i></span>
+    <aside #aside [class.show]="isOpen">
+      <div class="informtion">
+        <img [src]="project.project_poster" alt="project poster" [routerLink]="'/project/details/'+project.id">
+        <h6 [routerLink]="'/project/details/'+project.id">{{project.project_title | projectDis : 25}}</h6>
       </div>
+      <ul>
+        <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'bar'}" (click)=" updateChart('bar')">
+          Dashboard</li>
+        <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'views'}" (click)="updateChart('views')">
+          Views</li>
+        <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'interactions'}"
+          (click)="updateChart('interactions')">Interactions</li>
+        <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'clicks'}" (click)="updateChart('clicks')">
+          Link Clicks</li>
+        <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'visits'}" (click)="updateChart('visits')">
+          Page Visits</li>
+        <li class="fade-up" appFadeUp [ngClass]="{'active' : activeChart == 'followers'}"
+          (click)=" updateChart('followers')">Followers</li>
+
+      </ul>
+    </aside>
+
+    <article class="contact_chart">
+      <section class="details">
+        <article class="cart" *ngFor="let item of metrics" (click)="updateChart(item.chart_cace)">
+          <div class="header">
+            <span><i class="fa-solid" [ngClass]="item.icon"></i></span>
+            <p>{{item.label}}</p>
+          </div>
+
+          <h3>
+            {{clcPresent(item.key)}}%
+            <i class="fa-solid" [style.color]="getColor(item.key)" [ngClass]="getTrend(item.key)">
+            </i>
+          </h3>
+
+          <div class="progress-bar">
+            <p class="bar" [style.width.%]="getSafePercent(item.key)" [style.background]="getColor(item.key)">
+            </p>
+          </div>
         </article>
-    </section>
-  </div>
+      </section>
+
+      <section class="charts">
+        <div class="chart-card">
+          <apx-chart class="apx-chart fade-up" appFadeUp [labels]="chartOptions.labels!" [series]="chartOptions.series!"
+            [chart]="chartOptions.chart!" [xaxis]="chartOptions.xaxis!" [yaxis]="chartOptions.yaxis!"
+            [colors]="chartOptions.colors!" [dataLabels]="barChartOptions.dataLabels!"
+            [stroke]="barChartOptions.stroke!" [plotOptions]="barChartOptions.plotOptions!"
+            [tooltip]="barChartOptions.tooltip!" [fill]="barChartOptions.fill!">
+          </apx-chart>
+        </div>
+        <div class="small_cart" *ngIf="activeChart == 'bar'">
+          <div class="chart-card fade-up" appFadeUp> <apx-chart class="apx-chart fade-up" appFadeUp
+              [labels]="clickChartOptions.labels!" [series]="clickChartOptions.series!"
+              [chart]="clickChartOptions.chart!" [xaxis]="clickChartOptions.xaxis!" [yaxis]="clickChartOptions.yaxis!"
+              [colors]="clickChartOptions.colors!" [dataLabels]="clickChartOptions.dataLabels!"
+              [stroke]="clickChartOptions.stroke!" [plotOptions]="clickChartOptions.plotOptions!"
+              [tooltip]="clickChartOptions.tooltip!" [fill]="clickChartOptions.fill!">
+            </apx-chart>
+          </div>
+          <div class="dontes">
+            <div class="chart-card fade-up" appFadeUp>
+              Number of views
+              <apx-chart class="apx-chart fade-up" appFadeUp [labels]="viewsChartOptions.labels!"
+                [series]="viewsChartOptions.series!" [chart]="viewsChartOptions.chart!"
+                [xaxis]="viewsChartOptions.xaxis!" [yaxis]="viewsChartOptions.yaxis!"
+                [colors]="viewsChartOptions.colors!" [dataLabels]="viewsChartOptions.dataLabels!"
+                [stroke]="viewsChartOptions.stroke!" [plotOptions]="viewsChartOptions.plotOptions!"
+                [tooltip]="viewsChartOptions.tooltip!" [fill]="viewsChartOptions.fill!">
+              </apx-chart>
+            </div>
+            <div class="chart-card fade-up" appFadeUp>
+              Visit pages
+              <apx-chart class="apx-chart fade-up" appFadeUp [labels]="visitChartOptions.labels!"
+                [series]="visitChartOptions.series!" [chart]="visitChartOptions.chart!"
+                [xaxis]="visitChartOptions.xaxis!" [yaxis]="visitChartOptions.yaxis!"
+                [colors]="visitChartOptions.colors!" [dataLabels]="visitChartOptions.dataLabels!"
+                [stroke]="visitChartOptions.stroke!" [plotOptions]="visitChartOptions.plotOptions!"
+                [tooltip]="visitChartOptions.tooltip!" [fill]="visitChartOptions.fill!">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--& table  -->
+      <section class="show_data" *ngIf="activeChart == 'bar'">
+        <div class="title fade-up" appFadeUp>
+
+          <h4> <i class="fa-regular fa-clipboard"></i> Project Performance <span>({{project.results.length * 3 }}
+              Months)</span></h4>
+        </div>
+        <article class="data_header">
+          <ul class="fade-up" appFadeUp>
+            <li>Stage</li>
+            <li>Views</li>
+            <li>Interactions</li>
+            <li>Link Clicks</li>
+            <li>Visits Pages</li>
+            <li>Followers</li>
+          </ul>
+        </article>
+        <article class="data-body">
+          @for (stage of project.results; track $index) {
+          <ul [ngClass]="{'bg-pimary' :$index%2 ===0} ">
+            @if($index === 0){
+            <li class="fade-left" appFadeLeft>After 3 Month</li>
+            }@else {
+            <li class="fade-left" appFadeLeft>Before{{$index * 3}} Month</li>
+            }
+            <li class="fade-left" appFadeLeft>{{stage.view}}</li>
+            <li class="fade-left" appFadeLeft>{{stage.interaction}}</li>
+            <li class="fade-left" appFadeLeft>{{stage.Click}}</li>
+            <li class="fade-left" appFadeLeft>{{stage.visit_page}}</li>
+            <li class="fade-left" appFadeLeft>{{stage.New_follower}}</li>
+          </ul>
+          }
+        </article>
+      </section>
+    </article>
+  </section>
 </section>
 
 
 
 
 <!--
-
         <canvas #allChart *ngIf="activeChart === 'table'"></canvas>
         <canvas #viewsCanvas *ngIf="activeChart === 'views'"></canvas>
         <canvas #interactionsCanvas *ngIf="activeChart === 'interactions'"></canvas>
         <canvas #clicksCanvas *ngIf="activeChart === 'clicks'"></canvas>
         <canvas #visitsCanvas *ngIf="activeChart === 'visits'"></canvas>
         <canvas #followersCanvas *ngIf="activeChart === 'followers'"></canvas>
-
 -->

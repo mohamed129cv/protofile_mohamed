@@ -20,7 +20,7 @@ export class NavbarComponent {
       document.body.classList.add('dark')
     }
   }
-  pages: string[] = ['home', 'project', 'contact-us'];
+  pages: string[] = ['home', 'project', 'blog' , 'contact-us' ];
 
   ngAfterViewInit(): void {
     this._bg.$theme.subscribe({

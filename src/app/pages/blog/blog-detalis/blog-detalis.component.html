@@ -1,0 +1,87 @@
+<section class="blog_detail" *ngIf="blog" [ngClass]="bg =='dark'?'dark':'light'">
+
+  <!-- Hero -->
+  <div class="hero">
+
+    <h1 class="title fade-up" appFadeUp>{{ blog.blog_title }}</h1>
+
+    <div class="meta">
+      <span class="author fade-up" appFadeUp>✍ {{ blog.author }}</span>
+      <span class="date fade-up" appFadeUp>📅 {{ blog.blog_date | date:'mediumDate' }}</span>
+    </div>
+
+  </div>
+
+  <!-- Main layout -->
+  <div class="content_wrapper">
+
+
+    <!-- Main Content -->
+    <div class="main_content">
+      <article class="urls">
+        <ul>
+          @for(title of blog.content ; track $index  ){
+            <li class="fade-up" appFadeUp><a (click)="scrollTo(title.title)">{{title.title}}</a></li>
+          }
+        </ul>
+      </article>
+      <!-- Poster -->
+      <div class="main_image">
+        <img [src]="blog.blog_poster" alt="" class="fade-up" appFadeLeft>
+      </div>
+
+      <!-- Description -->
+      <div class="description card">
+        <p *ngFor="let d of blog.blog_dis" appFadeUp class="fade-up">
+          {{ d }}
+        </p>
+      </div>
+
+      <!-- Sections -->
+      <div *ngFor="let c of blog.content" class="section card" [id]="getId(c.title)">
+        <h2 class="section_title fade-up" appFadeUp>{{ c.title }}</h2>
+        <!-- Media -->
+        <div class="media">
+          <img *ngIf="c.type === 'image'"  appFadeUp class="fade-up" [src]="c.poster||'./assets/notFoundImg.jpg'" />
+          <video *ngIf="c.type === 'video'" appFadeUp class="fade-up"  controls [src]="c.poster"></video>
+        </div>
+        <!-- Content -->
+        <div class="paragraphs">
+          <p *ngFor="let s of c.subject" class="fade-up" appFadeUp>
+            {{ s }}
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="card tags_card">
+        <h3>Tags</h3>
+        <div class="tags">
+          <span class="tag" *ngFor="let t of blog.tag">
+            #{{ t }}
+          </span>
+        </div>
+      </div>
+      <section class="card Related_links">
+        <h3 class="fade-up" appFadeUp>Related links</h3>
+        <article class="links">
+          @for (blog of allBlogs; track $index) {
+          <section (click)="goToBlog(blog.id)" appFadeRight class="fade-right">
+            <img [src]="blog.blog_poster" [alt]="blog.blog_title">
+            <div class="overview">
+              <h5 class="" appFadeUp>{{blog.blog_title}}<i class="fa-solid fa-up-right-from-square"></i></h5>
+              <p class="" appFadeUp>{{blog.author}}</p>
+            </div>
+          </section>
+          }
+        </article>
+      </section>
+
+    </aside>
+
+  </div>
+
+</section>

@@ -4,32 +4,32 @@ export interface Iproject {
   project_dis: string,
   project_rate: number,
   project_type: string,
-  project_poster: string ,
-  tools : Itools [] ,
-  strategics : Istrategics[] ,
-  roles : Iroles [] ,
-  challenges : Ichallenges [] ,
-  results :Iproject_reselt[] ,
+  project_poster: string,
+  tools: Itools[],
+  strategics: Istrategics[],
+  roles: Iroles[],
+  challenges: Ichallenges[],
+  results: Iproject_reselt[],
   project_media: Iproject_media[],
-  date_start : Date ,
-  date_end : Date ,
-  recommendations  : Irecommendtion[] ,
-  client_name : string
+  date_start: Date,
+  date_end: Date,
+  recommendations: Irecommendtion[],
+  client_name: string
 }
 export interface Itools {
-  tool : string
+  tool: string
 }
 export interface Istrategics {
-  strategic : string
+  strategic: string
 }
 export interface Iroles {
-  role : string
+  role: string
 }
 export interface Ichallenges {
-  challenge : string
+  challenge: string
 }
 export interface Irecommendtion {
-  recommendation  : string
+  recommendation: string
 }
 export interface Iproject_media {
   isVideo: boolean,
@@ -37,9 +37,15 @@ export interface Iproject_media {
   dis: string,
 }
 export interface Iproject_reselt {
-   view : number,
-    interaction : number ,
-    Click : number ,
-    visit_page : number ,
-    New_follower : number ,
+  view: number,
+  interaction: number,
+  Click: number,
+  visit_page: number,
+  New_follower: number,
+}
+export interface Imetrics {
+  key: "view" | "interaction" |"Click" |"visit_page" |"New_follower";
+  chart_cace: 'views' |'interactions' | 'clicks' |  'visits' |  'followers'
+  label: string;
+  icon: string;
 }

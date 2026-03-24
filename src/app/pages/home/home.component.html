@@ -10,30 +10,65 @@
   <article class="about_me fade-up" id="about_me" appFadeUp>
     <h2 class="fade-up" appFadeUp>about me</h2>
     <section class="about_me_content">
-      <!--& informtion -->
-      <article class="data">
+      <article class="myImg">
         <img src="./assets/mohamed_re.png" alt="my_image" class="fade-left" appFadeLeft>
-        <div class="informtion fade-right" appFadeRight>
-          <p><span>name :</span>mohammed Abdulaziz</p>
-          <p><span>age :</span>24</p>
-          <p><span>phone :</span>+201029155459</p>
-          <p><span>email :</span>mohammedAbdlaiziz1&#64;gmail.com</p>
-        </div>
       </article>
-      <div class="about_me_text">
-        <span class="fade-left" appFadeLeft>
+      <article class="about_me_text">
+        <h3 class="title fade-up" appFadeUp>I am A Digital Marketing Specialist</h3>
+        <p class="fade-left" appFadeLeft>
           Business Administration Graduate specialized in Digital Marketing. Skilled in social media management, paid
           advertising, content creation, and performance analysis. Focused on delivering high ROI and building strong
           online brand presence.
-        </span>
-        <span class="fade-right" appFadeRight>
+        </p>
+        <p class="fade-right" appFadeRight>
           Experienced in creating data-driven marketing strategies, optimizing campaigns for better conversion rates,
           and
           helping businesses reach their target audience effectively. Always eager to learn new trends and tools to stay
           ahead in the fast-paced digital marketing world..
-        </span>
-      </div>
+        </p>
+        <button type="button" class="btn btn-primary m-2">DOWNLOAD CV</button>
+        <button type="button" class="btn btn-outline-primary" [routerLink]="'/project'">VIEW PROJECTS</button>
+      </article>
 
+    </section>
+  </article>
+  <!--& About me  -->
+  <article class="resume">
+    <section class="container">
+      <p class="fade-up" appFadeUp>MY resume</p>
+      <h3 class="fade-up mb-5" appFadeUp>Education</h3>
+      <div class="resume-content">
+        <article class="card fade-up" appFadeUp>
+          <h6 class="edu-title">Faculty of Commerce</h6>
+          <p>Business Administration</p>
+          <p>
+            <i class="fa fa-calendar-days"></i> 2021-2025
+          </p>
+          <p>
+            <i class="fa-solid fa-location-dot"></i>Beni Suef
+          </p>
+        </article>
+        <article class="card fade-up" appFadeUp>
+          <h6 class="edu-title">Digital Egypt Builders Initiative (DEBI)</h6>
+          <p>Digital Marketing</p>
+          <p>
+            <i class="fa fa-calendar-days"></i> 2025
+          </p>
+          <p>
+            <i class="fa-solid fa-location-dot"></i> Online
+          </p>
+        </article>
+        <article class="card fade-up" appFadeUp>
+          <h6 class="edu-title">classera</h6>
+          <p>Social media advertising management</p>
+          <p>
+            <i class="fa fa-calendar-days"></i> 2025
+          </p>
+          <p>
+            <i class="fa-solid fa-location-dot"></i> Online
+          </p>
+        </article>
+      </div>
     </section>
   </article>
   <!--& projects  -->
@@ -206,3 +241,37 @@
   </article>
 
 </section>
+
+
+
+<!-- <article class="about_me fade-up" id="about_me" appFadeUp>
+    <h2 class="fade-up" appFadeUp>about me</h2>
+    <section class="about_me_content">
+      & informtion
+      <article class="data">
+       <div class="myImg"> <img src="./assets/mohamed_re.png" alt="my_image" class="fade-left" appFadeLeft>
+        <p class="badge">Available for Freelance</p></div>
+        <div class="informtion fade-right" appFadeRight>
+          <p><span>name :</span>Mohammed Abdulaziz</p>
+          <p><span>age :</span>24</p>
+          <p><span>phone :</span>+201029155459</p>
+          <p><span>email :</span>mohamed8abdulaziz&#64;gmail.com</p>
+        </div>
+      </article>
+      <div class="about_me_text">
+      <h3 class="title">Digital Marketing Specialist</h3>
+        <span class="fade-left" appFadeLeft>
+          Business Administration Graduate specialized in Digital Marketing. Skilled in social media management, paid
+          advertising, content creation, and performance analysis. Focused on delivering high ROI and building strong
+          online brand presence.
+        </span>
+        <span class="fade-right" appFadeRight>
+          Experienced in creating data-driven marketing strategies, optimizing campaigns for better conversion rates,
+          and
+          helping businesses reach their target audience effectively. Always eager to learn new trends and tools to stay
+          ahead in the fast-paced digital marketing world..
+        </span>
+      </div>
+
+    </section>
+  </article> -->

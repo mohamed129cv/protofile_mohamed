@@ -278,7 +278,6 @@ export class ProjectsCartComponent {
 
     this.eidtMode = true;
     this.clearControls()
-    console.log(this.toolsControls.length);
     this.projectId = project.id;
     this.imgsrc = project.project_poster;
     // إضافة القيم مباشرة

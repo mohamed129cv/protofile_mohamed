@@ -1,0 +1,167 @@
+.blog_detail {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Hero */
+.hero {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.meta {
+  display: flex;
+  gap: 15px;
+  color: #777;
+  font-size: 14px;
+}
+.blog_detail.dark .meta ,.blog_detail.dark .title{
+  color: var(--color-text);
+}
+
+/* Layout */
+.content_wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit , minmax(250px , 1fr));
+  gap: 25px;
+}
+.main_content{
+  grid-column: span 2;
+}
+/* Cards */
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+.blog_detail.dark .card{
+  color: var(--color-text);
+  background-color: var(--bg4);
+}
+/* Main image */
+.main_image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Sections */
+.section_title {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.media img,
+.media video {
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.paragraphs p {
+  line-height: 1.8;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.blog_detail.dark h2 {
+  color: var(--main-color);
+}
+.blog_detail.dark .paragraphs p {
+  color: var(--color-text);
+}
+/* Sidebar */
+.sidebar {
+  grid-column: span 1;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  background: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+.blog_detail.dark .tag {
+  background: var(--main-color);
+  color: var(--color-text);
+}
+.links{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.urls ul li a {
+  color:var(--main-color) ;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.urls ul li a:hover {
+  text-decoration: solid;
+}
+.Related_links {
+  max-height: 50vh;
+  overflow: auto  ;
+}
+.links section{
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top:20px ;
+}
+.links section img{
+  height: 60px;
+  width: 70px;
+  border-radius: 5px;
+  flex: 1;
+}
+.links section .overview{
+  flex: 2;
+  padding: .5rem;
+  cursor: pointer;
+}
+.links section .overview p{
+  color: var(--border);
+  margin-top: 0;
+}
+.links section .overview i{
+  transition: var(--transition);
+  margin-inline: 10px;
+}
+.links section:hover .overview i{
+  color: var(--main-color);
+}
+
+.blog_detail.dark .links section .overview h5 {
+  color: var(--main-color);
+}
+.blog_detail.dark .links section .overview p{
+  color: var(--color-text);
+}
+

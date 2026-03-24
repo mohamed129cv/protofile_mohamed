@@ -8,6 +8,7 @@ import { Iproject } from '../../core/interface/iproject';
 import { SearchPipe } from '../../core/pipe/search.pipe';
 import { BgService } from '../../core/api/bg.service';
 import { SeoService } from '../../core/api/seo.service';
+import { AdminModeService } from '../../core/api/admin-mode.service';
 
 @Component({
   selector: 'app-projects',
@@ -18,13 +19,12 @@ import { SeoService } from '../../core/api/seo.service';
 })
 
 export class ProjectsComponent {
-  constructor(private _seo : SeoService, private _ToastrService: ToastrService, private _ProjectApiService: ProjectApiService, private _bg: BgService) {
+  constructor(private _seo : SeoService, private _ToastrService: ToastrService, private _ProjectApiService: ProjectApiService, private _bg: BgService , private _AdminModeService:AdminModeService) {
   }
   ngOnInit(): void {
     this.intiFormControl()
     this.intiFormGroup()
     this.getProjects()
-
     this._seo.updateMate(
       "A high-performance lead generation campaign using Facebook & Instagram Ads that increased qualified leads by 45% in 3 months.",
       "Lead Generation Campaign" ,
@@ -37,7 +37,11 @@ export class ProjectsComponent {
         this.bg = res
       }
     })
-
+    this._AdminModeService.$adminMode.subscribe({
+     next : res=>{
+       this.adminMode = res
+     }
+   })
 
   }
   typeMode: string = 'all'
@@ -45,7 +49,7 @@ export class ProjectsComponent {
   bg!: string
   projects: Iproject[] = [] as Iproject[]
   allProjects: Iproject[] = [] as Iproject[]
-  adminMode: boolean = false
+  adminMode!: boolean
   userName: string = 'admin'
   password: string = 'army4'
   searchWord: string = ''
@@ -64,6 +68,7 @@ export class ProjectsComponent {
   }
   saveData() {
     this.adminMode = false
+    this._AdminModeService.toggleAdminMode(this.adminMode)
     this._ToastrService.success('Data Saved', 'Success')
   }
   singUp!: FormGroup
@@ -81,6 +86,7 @@ export class ProjectsComponent {
   submitLogin() {
     if (this.pass.value == this.password && this.user.value == this.userName) {
       this.adminMode = true
+      this._AdminModeService.toggleAdminMode(this.adminMode)
       this.closing()
       this._ToastrService.success('You have logged into admin mode. ', 'Success')
 

@@ -13,7 +13,7 @@ h2 {
   color: var(--bg);
   text-align: center;
   position: relative;
-  margin: 3rem 0;
+  margin: 0.8rem 0 1.7rem;
 }
 h2::after {
   content: "";
@@ -75,10 +75,9 @@ button.btn_p:hover::after {
     url("/assets/mohamed_re.png") no-repeat center/cover;
   color: var(--color-text);
   position: relative;
-
 }
-.hero h1{
-      text-transform: none !important;
+.hero h1 {
+  text-transform: none !important;
 }
 .hero .my_job_name::after {
   content: "";
@@ -112,66 +111,92 @@ button.btn_p:hover::after {
 .about_me {
   width: 100%;
   min-height: 70vh;
-  padding: clamp(1rem, 1vw + 1rem, 2rem);
-  margin-top: 30px;
+  padding: clamp(0.6rem, 1vw + 0.4rem, 1.5rem);
 }
 .about_me .about_me_content {
   width: 85%;
   margin: auto;
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  /* gap: 0.8rem; */
   border-radius: 0.5rem;
-  border: var(--border);
-  box-shadow: var(--shadow);
 }
-.about_me .data {
+/* .about_me .data {
+  flex: 1;
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 0.7rem;
+} */
+.badge {
+  background: var(--green);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 10px;
+}
+.about_me .myImg{
+  display: grid;
+  place-items: center;
+  width: 50%;
 }
 .about_me img {
-  width: 40%;
-  border-radius: 0.3rem 0 0 0.3rem;
-}
-/** البيانات الاساسية  */
-.about_me .informtion {
-  padding: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.7rem;
-  text-transform: capitalize;
-}
-.about_me .informtion span {
-  margin: 0;
-  font-weight: 700;
-  color: var(--dark);
-  text-transform: uppercase;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: bounce2 1s infinite alternate ;
 }
 /** معلومات العمل و المهارات   */
 .about_me_text {
   padding: 1.3rem;
-  width: 60%;
+  width: 50%;
   line-height: 160%;
 }
-.about_me_text h2 {
-  margin: 0.8rem 0 1.5rem 0;
+
+.about_me_text .title {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--main-color);
 }
-.about_me_text span {
+.about_me_text p {
   position: relative;
-  display: inline-block;
   margin: 10px 0;
 }
-.about_me_text span::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--dark);
-  position: absolute;
-  top: 10px;
-  left: -25px;
+/*& resume section  */
+.resume{
+  width: 100%;
+  min-height: 70vh;
+  background-color: var(--color-muted);
+  padding: clamp(1rem , 1vw + .8rem , 2rem);
 }
+.resume .container > p{
+  color: var(--main-color);
+  margin: 0;
+}
+
+.resume-content{
+  width: 100%;
+  display: grid;
+  gap: .6rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px , 1fr) );
+}
+.resume .card {
+  background-color: var(--color-text);
+  text-align: center;
+  padding: 1rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow) ;
+}
+.resume .card:hover {
+  transform: translateY(-15px);
+}
+
+.resume .card i{
+  color: var(--main-color);
+}
+
 /*& project section  */
 .my-project {
   width: 100%;
@@ -198,36 +223,35 @@ button.btn_p:hover::after {
 }
 .skills_sec {
   width: 85%;
-  margin: 20px auto ;
+  margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: row wrap;
 }
-.skills_sec aside{
+.skills_sec aside {
   width: 20%;
   display: flex;
   flex-flow: column wrap;
   gap: 1.5rem;
   margin-block: 1.2rem;
 }
-.skills_sec aside h4{
+.skills_sec aside h4 {
   width: 100%;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   box-shadow: var(--shadow);
   transition: var(--transition);
   padding: 1rem;
   text-align: center;
   cursor: pointer;
 }
-.skills_sec aside h4.active ,
-.skills_sec aside h4:hover{
+.skills_sec aside h4.active,
+.skills_sec aside h4:hover {
   background-color: var(--main-color);
   color: var(--color-text);
 }
 .skills_contcet {
   width: 75%;
-
 }
 .skills {
   width: 100%;
@@ -310,6 +334,7 @@ button.btn_p:hover::after {
   padding: clamp(1rem, 1vw + 0.1rem, 2.5rem);
   display: grid;
   place-items: center;
+  background-color: var(--color-muted);
 }
 
 .achievements_contect {
@@ -369,7 +394,7 @@ button.btn_p:hover::after {
   color: var(--main-color);
 }
 /*& contact us  */
-.contact .container{
+.contact .container {
   background-color: var(--main-color);
   color: var(--color-text);
   display: flex;
@@ -384,7 +409,7 @@ button.btn_p:hover::after {
 .contact .container h5 {
   font-size: 2rem;
   font-weight: 700;
-  margin-block:20px ;
+  margin-block: 20px;
 }
 /*! madie Qoury  */
 
@@ -393,24 +418,27 @@ button.btn_p:hover::after {
     flex-flow: column wrap;
     gap: 0rem;
   }
-  .about_me img {
+  .about_me .myImg{
+
     width: 100%;
-    border-radius: 0.3rem 0.3rem 0 0;
+  }
+  .about_me img {
+    margin-block: 20px;
   }
   .about_me .about_me_content {
     width: 95%;
   }
-  .skills_sec{
+  .skills_sec {
     flex-direction: column;
     width: 95%;
   }
-  .skills_sec aside{
+  .skills_sec aside {
     width: 100%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-  .skills_sec aside h4{
+  .skills_sec aside h4 {
     width: auto;
   }
   .skills_contcet {
@@ -426,7 +454,7 @@ button.btn_p:hover::after {
     flex-direction: column;
     width: 100%;
   }
-  .achievement{
+  .achievement {
     width: 100%;
   }
   .about_me .informtion,
@@ -437,10 +465,11 @@ button.btn_p:hover::after {
   }
 }
 
-.home_page.dark p , .home_page.dark span{
+.home_page.dark p,
+.home_page.dark span {
   color: var(--color-text);
 }
-.home_page.dark h2{
+.home_page.dark h2 {
   color: var(--color-text);
 }
 
@@ -451,153 +480,330 @@ button.btn_p:hover::after {
 .home_page.dark .go_down {
   background-color: var(--color-text);
 }
-.home_page.dark h2::after ,
-.home_page.dark button.btn_p::after ,
-.home_page.dark .skills_sec aside h4.active ,
-.home_page.dark .skills_sec aside h4:hover ,
-.home_page.dark .hero .go_down:hover ,
+.home_page.dark h2::after,
+.home_page.dark button.btn_p::after,
+.home_page.dark .skills_sec aside h4.active,
+.home_page.dark .skills_sec aside h4:hover,
+.home_page.dark .hero .go_down:hover,
 .home_page.dark .about_me_text span::after {
   background-color: var(--main-color);
 }
-
+.home_page.dark .resume h3 ,
 .home_page.dark .about_me .informtion span,
-.home_page.dark .skills_sec aside h4.active ,
-.home_page.dark .skills_sec aside h4:hover ,
+.home_page.dark .skills_sec aside h4.active,
+.home_page.dark .skills_sec aside h4:hover,
 .home_page.dark button.btn_p:hover,
-.home_page.dark .hero .go_down:hover ,
-.home_page.dark .Services_contect .service-card p{
+.home_page.dark .hero .go_down:hover,
+.home_page.dark .Services_contect .service-card p {
   color: var(--color-text);
 }
-
-.home_page.dark .Services_contect .service-card ,
-.home_page.dark .about_me .about_me_content  ,
-.home_page.dark .skills_sec aside h4 ,
+.home_page.dark .achievements,
+.home_page.dark .resume {
+  background-color: transparent;
+}
+.home_page.dark .resume .card,
+.home_page.dark .Services_contect .service-card,
+.home_page.dark .skills_sec aside h4,
 .home_page.dark .achievement {
   background-color: var(--bg4);
-
 }
-.home_page.dark .go_down ,
-.home_page.dark .service-card i ,
-.home_page.dark button.btn_p ,
-.home_page.dark .Services_contect .service-card h3 ,
-.home_page.dark .achievement ,
+.home_page.dark .go_down,
+.home_page.dark .service-card i,
+.home_page.dark button.btn_p,
+.home_page.dark .Services_contect .service-card h3,
+.home_page.dark .achievement,
 .home_page.dark .achievement i {
   color: var(--main-color);
 }
 @keyframes jopAnimation {
   /* Social Media Specialist */
-  0% { content: "|"; }
+  0% {
+    content: "|";
+  }
   /* 1% { content: "S|"; } */
-  1% { content: "So|"; }
-  2% { content: "Soc|"; }
+  1% {
+    content: "So|";
+  }
+  2% {
+    content: "Soc|";
+  }
   /* 4% { content: "Soci|"; } */
-  3% { content: "Socia|"; }
+  3% {
+    content: "Socia|";
+  }
   /* 6% { content: "Social|"; } */
-  4% { content: "Social |"; }
+  4% {
+    content: "Social |";
+  }
   /* 8% { content: "Social M|"; } */
-  5% { content: "Social Me|"; }
+  5% {
+    content: "Social Me|";
+  }
   /* 10% { content: "Social Med|"; } */
-  6% { content: "Social Medi|"; }
+  6% {
+    content: "Social Medi|";
+  }
   /* 12% { content: "Social Media|"; } */
-  7% { content: "Social Media |"; }
+  7% {
+    content: "Social Media |";
+  }
   /* 14% { content: "Social Media S|"; } */
-  8% { content: "Social Media Sp|"; }
+  8% {
+    content: "Social Media Sp|";
+  }
   /* 16% { content: "Social Media Spe|"; } */
-  9% { content: "Social Media Spec|"; }
+  9% {
+    content: "Social Media Spec|";
+  }
   /* 18% { content: "Social Media Speci|"; } */
-  10% { content: "Social Media Specia|"; }
+  10% {
+    content: "Social Media Specia|";
+  }
   /* 20% { content: "Social Media Special|"; } */
-  11% { content: "Social Media Speciali|"; }
+  11% {
+    content: "Social Media Speciali|";
+  }
   /* 22% { content: "Social Media Specialis|"; } */
-  12% { content: "Social Media Specialist|"; }
-  15% { content: "Social Media Specialist|"; }
+  12% {
+    content: "Social Media Specialist|";
+  }
+  15% {
+    content: "Social Media Specialist|";
+  }
   /* 25% { content: "Social Media Specialist|"; }
   26% { content: "Social Media Specialist|"; }
   27% { content: "Social Media Specialist|"; }
   30% { content: "Social Media Specialist|"; }
   */
-  16% { content: "Social Media Speciali|"; }
+  16% {
+    content: "Social Media Speciali|";
+  }
   /* 32% { content: "Social Media Specia|"; } */
-  17% { content: "Social Media Spe|"; }
-  18% { content: "Social Media |"; }
-  19% { content: "Social Med|"; }
-  20% { content: "Social |"; }
-  21% { content: "Socia|"; }
-  22% { content: "So|"; }
-  23% { content: "|"; }
+  17% {
+    content: "Social Media Spe|";
+  }
+  18% {
+    content: "Social Media |";
+  }
+  19% {
+    content: "Social Med|";
+  }
+  20% {
+    content: "Social |";
+  }
+  21% {
+    content: "Socia|";
+  }
+  22% {
+    content: "So|";
+  }
+  23% {
+    content: "|";
+  }
   /* Content Marketing Specialist */
-  25% { content: "C|"; }
+  25% {
+    content: "C|";
+  }
   /* 52% { content: "Co|"; } */
-  26% { content: "Con|"; }
-  27% { content: "Conte|"; }
-  28% { content: "Content |"; }
-  29% { content: "Content Ma|"; }
-  30% { content: "Content Marke|"; }
-  31% { content: "Content Marketing |"; }
-  32% { content: "Content Marketing Spe|"; }
-  33% { content: "Content Marketing Specia|"; }
-  34% { content: "Content Marketing Speciali|"; }
-  35% { content: "Content Marketing Specialist|"; }
-  39% { content: "Content Marketing Special|"; }
-  40% { content: "Content Marketing Spe|"; }
-  41% { content: "Content Marketing |"; }
-  42% { content: "Content Market|"; }
-  43% { content: "Content Mar|"; }
-  44% { content: "Content |"; }
-  45% { content: "Cont|"; }
-  46% { content: "|"; }
+  26% {
+    content: "Con|";
+  }
+  27% {
+    content: "Conte|";
+  }
+  28% {
+    content: "Content |";
+  }
+  29% {
+    content: "Content Ma|";
+  }
+  30% {
+    content: "Content Marke|";
+  }
+  31% {
+    content: "Content Marketing |";
+  }
+  32% {
+    content: "Content Marketing Spe|";
+  }
+  33% {
+    content: "Content Marketing Specia|";
+  }
+  34% {
+    content: "Content Marketing Speciali|";
+  }
+  35% {
+    content: "Content Marketing Specialist|";
+  }
+  39% {
+    content: "Content Marketing Special|";
+  }
+  40% {
+    content: "Content Marketing Spe|";
+  }
+  41% {
+    content: "Content Marketing |";
+  }
+  42% {
+    content: "Content Market|";
+  }
+  43% {
+    content: "Content Mar|";
+  }
+  44% {
+    content: "Content |";
+  }
+  45% {
+    content: "Cont|";
+  }
+  46% {
+    content: "|";
+  }
 
   /* Email Marketing Specialist */
-  48% { content: "E|"; }
-  49% { content: "Ema|"; }
-  50% { content: "Email|"; }
-  51% { content: "Email Ma|"; }
-  52% { content: "Email Market|"; }
-  53% { content: "Email Marketing|"; }
-  54% { content: "Email Marketing |"; }
-  55% { content: "Email Marketing Sp|"; }
-  56% { content: "Email Marketing Speci|"; }
-  57% { content: "Email Marketing Special|"; }
-  58% { content: "Email Marketing Specialist|"; }
-  61% { content: "Email Marketing Special|"; }
-  62% { content: "Email Marketing Spe|"; }
-  63% { content: "Email Marketing |"; }
-  64% { content: "Email Market|"; }
-  65% { content: "Email Ma|"; }
-  66% { content: "Email|"; }
-  67% { content: "Ema|"; }
-  68% { content: "|"; }
+  48% {
+    content: "E|";
+  }
+  49% {
+    content: "Ema|";
+  }
+  50% {
+    content: "Email|";
+  }
+  51% {
+    content: "Email Ma|";
+  }
+  52% {
+    content: "Email Market|";
+  }
+  53% {
+    content: "Email Marketing|";
+  }
+  54% {
+    content: "Email Marketing |";
+  }
+  55% {
+    content: "Email Marketing Sp|";
+  }
+  56% {
+    content: "Email Marketing Speci|";
+  }
+  57% {
+    content: "Email Marketing Special|";
+  }
+  58% {
+    content: "Email Marketing Specialist|";
+  }
+  61% {
+    content: "Email Marketing Special|";
+  }
+  62% {
+    content: "Email Marketing Spe|";
+  }
+  63% {
+    content: "Email Marketing |";
+  }
+  64% {
+    content: "Email Market|";
+  }
+  65% {
+    content: "Email Ma|";
+  }
+  66% {
+    content: "Email|";
+  }
+  67% {
+    content: "Ema|";
+  }
+  68% {
+    content: "|";
+  }
 
   /* Marketing Strategist */
-  69% { content: "M|"; }
-  70% { content: "Mark|"; }
-  71% { content: "Mark |"; }
-  72% { content: "Marketing Str|"; }
-  73% { content: "Marketing Strate|"; }
-  74% { content: "Marketing Strategist|"; }
-  77% { content: "Marketing Strate|"; }
-  78% { content: "Marketing St|"; }
-  79% { content: "Marketing|"; }
-  80% { content: "Mark|"; }
-  81% { content: "Ma|"; }
-  82% { content: "|"; }
+  69% {
+    content: "M|";
+  }
+  70% {
+    content: "Mark|";
+  }
+  71% {
+    content: "Mark |";
+  }
+  72% {
+    content: "Marketing Str|";
+  }
+  73% {
+    content: "Marketing Strate|";
+  }
+  74% {
+    content: "Marketing Strategist|";
+  }
+  77% {
+    content: "Marketing Strate|";
+  }
+  78% {
+    content: "Marketing St|";
+  }
+  79% {
+    content: "Marketing|";
+  }
+  80% {
+    content: "Mark|";
+  }
+  81% {
+    content: "Ma|";
+  }
+  82% {
+    content: "|";
+  }
 
   /* Performance Marketing */
-  83% { content: "P|"; }
-  84% { content: "Per|"; }
-  85% { content: "Perorm|"; }
-  86% { content: "Performance|"; }
-  87% { content: "Performance Mar|"; }
-  88% { content: "Performance Marke|"; }
-  89% { content: "Performance Marketing|"; }
-  92% { content: "Performance Market|"; }
-  93% { content: "Performance Mar|"; }
-  94% { content: "Performance |"; }
-  95% { content: "Performa|"; }
-  96% { content: "Perf|"; }
-  97% { content: "Pe|"; }
-  98% { content: "Pe|"; }
-  99% { content: "|"; }
-  100% { content: "|"; }
+  83% {
+    content: "P|";
+  }
+  84% {
+    content: "Per|";
+  }
+  85% {
+    content: "Perorm|";
+  }
+  86% {
+    content: "Performance|";
+  }
+  87% {
+    content: "Performance Mar|";
+  }
+  88% {
+    content: "Performance Marke|";
+  }
+  89% {
+    content: "Performance Marketing|";
+  }
+  92% {
+    content: "Performance Market|";
+  }
+  93% {
+    content: "Performance Mar|";
+  }
+  94% {
+    content: "Performance |";
+  }
+  95% {
+    content: "Performa|";
+  }
+  96% {
+    content: "Perf|";
+  }
+  97% {
+    content: "Pe|";
+  }
+  98% {
+    content: "Pe|";
+  }
+  99% {
+    content: "|";
+  }
+  100% {
+    content: "|";
+  }
 }
-

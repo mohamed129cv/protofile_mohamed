@@ -28,6 +28,7 @@ export class ProjectDetailsComponent {
     private _chart: Chart2Service,
 
   ) { }
+  isLoading :boolean = true
   bg!: string
   id!: string
   project: Iproject = {} as Iproject
@@ -39,14 +40,17 @@ export class ProjectDetailsComponent {
       this.clickChartOptions = this._chart.clickDataApex(this.project)
       this.followersChartOptions = this._chart.followersApex(this.project)
       this.interactionChartOptions = this._chart.interactionDataApex(this.project)
+      this.visitChartOptions = this._chart.vistDataApex(this.project)
     })
     this.renderChart();
+    this.isLoading = false
   }
 
   ngAfterViewInit() {
     this._bg.$theme.subscribe({
       next: res => {
         this.bg = res
+
       }
     })
   }

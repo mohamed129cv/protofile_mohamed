@@ -1,0 +1,51 @@
+<section class="blogs-page">
+  <article class="hero">
+    <div class="container">
+      <p class="title fade-up" appFadeUp>our blogs</p>
+      <h2>find our all blogs from here</h2>
+      <p>our blogs are written from very research and well known writers so that we can provide you the
+        best blogs and articles articles for you to read them all along</p>
+    </div>
+  </article>
+  <!--! blogs cart  -->
+  <article class="blogs-cart my-3">
+    <div class="container">
+      <section class="header fade-up" appFadeUp>
+        <input type="text" placeholder="search ....." class="form-control">
+        <span (click)="showLoginSection()"> <i class="fa-solid"
+            [ngClass]="adminMode ? 'fa-floppy-disk' : 'fa-pen-to-square' "></i></span>
+      </section>
+      <app-blog-cart [blogs]="blogs" [adminMode]="adminMode"></app-blog-cart>
+    </div>
+  </article>
+  <!--! subscrip  -->
+  <article class="subscrip">
+    <div class="container">
+      <h3  class="fade-up" appFadeUp> Get our stories delivered From us to your inbox weekly.</h3>
+      <form class="fade-up" appFadeUp>
+        <input type="text" class="form-control" placeholder="Your Email">
+        <button type="submit" class="btn btn-light">Get started</button>
+      </form>
+      <p class="fade-up" appFadeUp>
+        Get a response tomorrow if you submit by 9pm today. If we received after 9pm will get a reponse the following
+        day.
+      </p>
+    </div>
+  </article>
+</section>
+
+<section class="login hidden" #login>
+
+  <form >
+    <span class="e"><i class="fa-solid fa-xmark" (click)="exitLoginSection()"></i></span>
+    <h4>Register for the admin mode</h4>
+    <input type="text" class="form-control my-3" name="userName" placeholder="User Name ..." [(ngModel)]="inputUser">
+    <label class="password" >
+      <input [type]=" showPassword ?'text':'password'" class="form-control my-3" name="password" placeholder="Password ...." [(ngModel)]="inputPass">
+     <span (click)="toggleInputToPassword()" > <i class="fa-solid "
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i></span>
+    </label>
+    <button type="button" class="btn btn-primary" (click)="submitUser()">Login</button>
+  </form>
+</section>
+

@@ -7,14 +7,14 @@
       <span class="rate"><i class="fa-solid fa-star"></i> {{projcet.project_rate}}</span>
     </section>
     <section class="card-body">
-      <h4 class="card-title" (click)="detalisProject(projcet.id)">{{projcet.project_title | projectDis : 30}}</h4>
-      <p class="card-text">Client : {{projcet.client_name}}</p>
+      <h4 class="card-title" (click)="detalisProject(projcet.id)">{{projcet.project_title | projectDis : 20}}</h4>
+      <p class="card-text"><span class='text-primary fw-bolder'>Client</span> : {{projcet.client_name}}</p>
       <button class="btn btn-outline-primary" (click)="detalisProject(projcet.id)">Show Project</button>
     </section>
-    <div class="tools">
+    <div class="tools"  *ngIf="adminMode" >
       <i class="fa-regular fa-eye" (click)="detalisProject(projcet.id)"></i>
-      <i class="fa-solid fa-pen" *ngIf="adminMode" (click)="enableEdit(projcet.id)"></i>
-      <i class="fa-solid fa-trash" *ngIf="adminMode" (click)="deleteProject(projcet.id)"></i>
+      <i class="fa-solid fa-pen" (click)="enableEdit(projcet.id)"></i>
+      <i class="fa-solid fa-trash" (click)="deleteProject(projcet.id)"></i>
     </div>
   </article>
   }
@@ -54,9 +54,9 @@
       <!--& project poster  -->
       <article class="flid my-2 ">
         <label for="media" class="form-label">project poster</label>
-        <div class="imgBox">
+        <div class="imgBox d-flex justify-content-evenly g-3">
           <input type="file" name="media" id="media" class="form-control" (change)="uplodeImg($event)">
-          <img [src]="imgsrc || './assets/notFoundImg.jpg'" alt="" class="fade-up" appFadeUp>
+          <img [src]="imgsrc || './assets/notFoundImg.jpg'" alt="" class="fade-up" appFadeUp width="40px" height="40px">
         </div>
         <div class="validators">
           @if(project_poster.dirty || project_poster.touched){

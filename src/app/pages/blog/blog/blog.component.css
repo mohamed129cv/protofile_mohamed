@@ -1,0 +1,187 @@
+.blogs-page{
+  width: 100%;
+  min-height: 100vh;
+
+}
+.blogs-page .hero {
+  width: 100%;
+  height: 70vh;
+  background-color: var(--color-muted);
+  padding: clamp(1rem , 1vw + .8rem , 2rem);
+
+}
+.blogs-page .hero .container {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-flow: column wrap;
+  text-transform: capitalize;
+}
+
+.blogs-page .hero .title {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-block : 0 ;
+}
+.blogs-page .hero h2 {
+  font-size: clamp(2rem , 1vw + 2rem , 4rem);
+  font-weight: 900;
+  color: var(--border);
+}
+.blogs-page .subscrip{
+  width: 100%;
+  min-height: 50vh;
+  background-color: var(--main-color);
+}
+.blogs-page .subscrip .container{
+  padding: clamp(1rem , 1vw + .9rem , 2rem);
+  display: grid;
+  place-items: center;
+  gap: .6rem;
+  height: 100%;
+  text-align: center;
+}
+.blogs-page h3{
+  color: var(--color-text);
+  font-size: 52px;
+  font-weight: 787;
+}
+.blogs-page .subscrip form p{
+  color: #BBBBBB;
+}
+.blogs-page .subscrip form{
+  width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content:space-between;
+  gap: .4rem;
+  flex-direction: row;
+}
+.blogs-page .subscrip form input{
+  width: 50%;
+  flex: 2;
+}
+.blogs-page .subscrip form button{
+  width: 45%;
+  flex: 1;
+}
+/** login section  */
+.login{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 90;
+  transition: var(--transition);
+}
+.login form{
+  width: 380px;
+  background-color: var(--color-text);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: clamp(1.2rem, 1vw + 0.8rem, 2rem);
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.login .e {
+  width: 30px;
+  height: 30px;
+  padding: .3rem;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--color-text);
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.form_section.hidden ,
+.login.hidden{
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.7);
+}
+.form_section.show ,
+.login.show{
+  opacity:1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+.login form .password {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.login form input  {
+  width: 100%;
+  height: 100%;
+   padding-right: 45px;
+   transition: var(--transition);
+}
+.login form .password  span{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  padding: .3rem;
+  font-size: 1.3rem;
+  transition: var(--transition);
+  /* background-color: var(--color-muted); */
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  border-radius: 0 .3rem .3rem 0;
+}
+.login form .password  span i{
+  color: var(--dark);
+  transition: var(--transition);
+}
+.login form .password  span:hover i{
+  color: var(--main-color);
+  transform: scale(1.2);
+}
+
+
+/** project section  */
+.header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+}
+.header span{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  padding: .3rem;
+  background-color: transparent;
+  color: var(--main-color);
+  transition: var(--transition);
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+.header span:hover{
+  color: var(--color-text);
+  background-color: var(--main-color);
+}
+@media screen and (max-width : 787px) {
+  .blogs-page h3{
+    font-size: clamp(1.7rem , 1vw + 1.5rem , 3rem);
+  }
+}
