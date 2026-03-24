@@ -1,0 +1,1 @@
+import{Q as a,k as t}from"./chunk-2SEAMOLL.js";var n=class e{constructor(){}adminMode=new t(!1);$adminMode=this.adminMode.asObservable();toggleAdminMode(o){this.adminMode.next(o)}getAdminMode(){return this.adminMode.asObservable()}static \u0275fac=function(i){return new(i||e)};static \u0275prov=a({token:e,factory:e.\u0275fac,providedIn:"root"})};export{n as a};
