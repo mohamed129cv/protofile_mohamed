@@ -1,33 +1,45 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AdminModeService } from '../../../core/api/admin-mode.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogService } from '../../../core/api/blog.service';
 import { Iblogs } from '../../../core/interface/iblogs';
 import { BlogCartComponent } from '../blog-cart/blog-cart.component';
 import { UplodeImgService } from '../../../core/api/uplode-img.service';
 import { FadeUpDirective } from "../../../core/direcitve/fade-up.directive";
+import { SeoService } from '../../../core/api/seo.service';
+import { SearchBlogPipe } from '../../../core/pipe/search-blog.pipe';
+import { BgService } from '../../../core/api/bg.service';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, FormsModule, BlogCartComponent, ReactiveFormsModule, FadeUpDirective],
+  imports: [CommonModule, SearchBlogPipe, FormsModule, BlogCartComponent, ReactiveFormsModule, FadeUpDirective, RouterLink],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
 export class BlogComponent {
   constructor(
+    private _bg:BgService ,
     private _BlogService: BlogService, private _AdminModeService: AdminModeService,
     private _Router: Router,
-    private _UplodeImgService: UplodeImgService, private _ToastrService: ToastrService) { }
+    private _UplodeImgService: UplodeImgService, private _ToastrService: ToastrService , private _SeoService:SeoService) { }
 
   ngOnInit(): void {
     this.getBlogs()
-
+    this._SeoService.updateMate(
+      'SEO & Digital Marketing Blog' ,
+    'Learn proven SEO techniques, social media strategies, and marketing tips to grow your business online.' ,
+    'digital marketing, SEO, search engine optimization, social media marketing, online marketing, internet marketing ,digital marketing, SEO, search engine optimization, social media marketing, online marketing, internet marketing , social media strategy, instagram marketing, facebook marketing, content marketing, social media growth'
+   )
+   this._bg.$theme.subscribe(res=>{
+    this.bg= res
+   })
   }
-
+  bg!:string
+  searword : string = ''
   ngAfterViewInit(): void {
     this._AdminModeService.$adminMode.subscribe({
       next: res => {

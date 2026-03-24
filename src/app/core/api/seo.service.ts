@@ -8,7 +8,8 @@ export class SeoService {
 
   constructor(private title: Title, private meta: Meta ) { }
 
-  updateMate(description: string, title: string , keywords :string) {
+  updateMate(description: string, title: string , keywords :string ) {
+    this.title.setTitle(title)
     this.meta.updateTag({ name: 'description', content: description })
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({

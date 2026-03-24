@@ -10,6 +10,7 @@ import { FadeRightDirective } from "../../core/direcitve/fade-right.directive";
 import { FadeLeftDirective } from "../../core/direcitve/fade-left.directive";
 import { Chart2Service } from '../../core/api/chart2.service';
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
+import { SeoService } from '../../core/api/seo.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ProjectDetailsComponent {
     private _bg: BgService,
     private _router: Router,
     private _chart: Chart2Service,
-
+    private _SeoService:SeoService,
   ) { }
   isLoading :boolean = true
   bg!: string
@@ -44,6 +45,11 @@ export class ProjectDetailsComponent {
     })
     this.renderChart();
     this.isLoading = false
+    this._SeoService.updateMate(
+      this.project.project_dis ,
+      `${this.project.project_title} Case Study | SEO & Marketing Results` ,
+      'SEO expert, digital marketing, social media marketing, Google ads, lead generation, grow business online'
+    )
   }
 
   ngAfterViewInit() {

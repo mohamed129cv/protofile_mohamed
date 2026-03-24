@@ -1,3 +1,4 @@
+import { Iblogs } from './../../core/interface/iblogs';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FadeUpDirective } from "../../core/direcitve/fade-up.directive";
 import { FadeRightDirective } from "../../core/direcitve/fade-right.directive";
@@ -9,28 +10,30 @@ import { RouterLink } from '@angular/router';
 import { BgService } from '../../core/api/bg.service';
 import { CommonModule } from '@angular/common';
 import { SeoService } from '../../core/api/seo.service';
+import { BlogService } from '../../core/api/blog.service';
+import { AdminModeService } from '../../core/api/admin-mode.service';
+import { BlogCartComponent } from '../blog/blog-cart/blog-cart.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FadeUpDirective, RouterLink, FadeRightDirective, FadeLeftDirective , ProjectsCartComponent ,CommonModule],
+  imports: [FadeUpDirective, RouterLink, FadeRightDirective, FadeLeftDirective , ProjectsCartComponent ,CommonModule , BlogCartComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor( private _seo : SeoService , private _bg:BgService , private _ProjectApiService:ProjectApiService , private _BgService:BgService){
+  constructor( private _blog: BlogService , private _adminMode: AdminModeService , private _seo : SeoService , private _bg:BgService , private _ProjectApiService:ProjectApiService , private _BgService:BgService){
 
   }
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    this.getBlogs()
     this.getProjects()
     this._BgService.$theme.subscribe({
       next: res=>{
         this.bg = res
       }
     })
-
+    this._adminMode.$adminMode.subscribe(res => this.adminMode = res)
       this._seo.updateMate(
         "Results-driven Digital Marketing Specialist focused on scaling brands with targeted campaigns, advanced analytics, and ROI-focused strategies across social media and paid advertising platforms" ,
         "Growth-Focused Digital Marketing Expert Digital Marketing Specialist | Performance & Growth Expert" ,
@@ -101,7 +104,8 @@ export class HomeComponent {
        }
       } , speed)
   }
-
+  adminMode !: boolean
+  blogs : Iblogs[] = []
   projects:Iproject[] = []
   getProjects(){
     this._ProjectApiService.getAllProjects().subscribe({
@@ -110,6 +114,10 @@ export class HomeComponent {
       }
     })
   }
-
+  getBlogs(){
+    this._blog.getBlog().subscribe(res=>{
+      this.blogs = res.slice(0,6)
+    })
+  }
 
 }

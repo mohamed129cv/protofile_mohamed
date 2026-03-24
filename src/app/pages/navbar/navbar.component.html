@@ -6,26 +6,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav m-auto  mb-lg-0">
+      <ul class="navbar-nav ms-auto  mb-lg-0">
 
         @for (page of pages; track $index) {
         <li class="nav-item">
           <a class="nav-link " aria-current="page" [routerLinkActive]="'active'" [routerLink]="page">{{page}}</a>
         </li>
-        }
-      </ul>
+      }
+    </ul>
 
-      <form class="d-flex">
+    <form class="d-flex">
         <span class="btn fs-3 mx-1" [ngClass]="{'text-white' : bg =='dark'}"  (click)="toggleBg()">  <i class="fa-solid" [ngClass]="{'fa-sun' : bg =='dark' ,'fa-moon' : bg !=='dark' } "></i></span>
-        <!-- <button type="button" class="btn btn-outline-primary"
-        (click)="loadConveyThis()"
-        >
-          @if (!translateMode) {
-            EN
-          }@else {
-            AR
-          }
-        </button> -->
       </form>
     </div>
 

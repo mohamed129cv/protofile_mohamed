@@ -7,6 +7,7 @@ import { BgService } from '../../../core/api/bg.service';
 import { FadeUpDirective } from "../../../core/direcitve/fade-up.directive";
 import { FadeLeftDirective } from "../../../core/direcitve/fade-left.directive";
 import { FadeRightDirective } from "../../../core/direcitve/fade-right.directive";
+import { SeoService } from '../../../core/api/seo.service';
 
 @Component({
   selector: 'app-blog-detalis',
@@ -19,8 +20,9 @@ export class BlogDetalisComponent {
   blog: Iblogs = {} as Iblogs;
   allBlogs: Iblogs[] = []
   id!: number;
-  bg !:string 
+  bg !:string
   constructor(
+    private _seo:SeoService ,
     private _bg : BgService ,
     private _Router: Router,
     private route: ActivatedRoute,
@@ -36,6 +38,9 @@ export class BlogDetalisComponent {
     this._bg.$theme.subscribe(res=>{
       this.bg = res
     })
+    this._seo.updateMate(
+      this.blog.blog_dis.join(' , ') , this.blog.blog_title , this.blog.tag.join(' , ')
+    )
   }
   getAllBlogs() {
     this._BlogService.getBlog().subscribe(res => {

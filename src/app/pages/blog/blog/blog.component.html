@@ -1,4 +1,4 @@
-<section class="blogs-page">
+<section class="blogs-page" [ngClass]="bg == 'dark'? 'dark' :'light'  " >
   <article class="hero">
     <div class="container">
       <p class="title fade-up" appFadeUp>our blogs</p>
@@ -11,7 +11,14 @@
   <article class="blogs-cart my-3">
     <div class="container">
       <section class="header fade-up" appFadeUp>
-        <input type="text" placeholder="search ....." class="form-control">
+        <div class="search" >
+          <input type="text" [(ngModel)]="searword" placeholder="search ....." class="form-control">
+          <ul *ngIf="searword" appFadeUp class="fade-up">
+            @for(blog of blogs | searchBlog : searword ; track $index){
+              <li [routerLink]="['/blog', blog.id]" appFadeUp class="fade-up">{{blog.blog_title}}</li>
+            }
+          </ul>
+        </div>
         <span (click)="showLoginSection()"> <i class="fa-solid"
             [ngClass]="adminMode ? 'fa-floppy-disk' : 'fa-pen-to-square' "></i></span>
       </section>

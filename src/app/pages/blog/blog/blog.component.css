@@ -152,6 +152,34 @@
   color: var(--main-color);
   transform: scale(1.2);
 }
+.header ul {
+ margin-top: 10px;
+  width: 100%;
+  background: var(--color-text);
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-height: 250px;
+  overflow: auto;
+  padding: 5px 0;
+  list-style: none;
+  z-index: 900;
+}
+.blogs-page.dark .header ul {
+  background-color: var(--bg4);
+}
+.search ul li  {
+  z-index: 900;
+  display: block;
+  padding: 10px 15px;
+  color: var(--main-color);
+  transition: var(--transition);
+  font-size: 14px;
+}
+.search ul li:hover {
+  background: var(--main-color);
+  color: var(--color-text);
+  padding-left: 20px;
+}
 
 
 /** project section  */
@@ -162,6 +190,9 @@
   align-items: center;
   gap: 20px;
 
+}
+.header .search{
+  flex: 3;
 }
 .header span{
   width: 50px;

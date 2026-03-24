@@ -227,7 +227,31 @@
       </div>
     </section>
   </article>
+  <article class="blogs">
+    <div class="container">
 
+      <h3 class="fade-up" appFadeUp>Learn SEO, Social Media & Digital Marketing Strategies</h3>
+      <p class="fade-up" appFadeUp>
+        Discover practical tips and proven strategies in SEO, content marketing, and paid ads
+        to help you drive traffic, generate leads, and grow your business online.   <a [routerLink]="['/blog']">
+        Read Full Article
+      </a>
+      </p>
+    </div>
+  </article>
+  <article class="blog_list">
+    <div class="container">
+      <div class="section_header">
+        <h2 class="fade-up" appFadeUp>Latest Articles</h2>
+        <p class="fade-up" appFadeUp>Explore our latest SEO and digital marketing content</p>
+      </div>
+      <app-blog-cart [blogs]="blogs" [adminMode]="adminMode"></app-blog-cart>
+    </div>
+    <button class="btn-primary btn fade-up" appFadeLeft type="button" [routerLink]="['/blog']">
+      Read Full Article
+    </button>
+
+  </article>
   <article class="contact">
     <div class="container">
       <h5>Start your journey towards digital success today?</h5>

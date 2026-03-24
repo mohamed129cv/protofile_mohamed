@@ -1,10 +1,10 @@
 <section class="blogs" [ngClass]="bg == 'dark' ? 'dark':'light' ">
   @for (blog of blogs; track $index) {
   <article class="blog_card my-3 fade-up" appFadeUp>
-    <img [src]="blog.blog_poster" [alt]="blog.blog_title">
+    <img [src]="blog.blog_poster" [alt]="blog.blog_title" (click)="goToDetalis(blog.id)">
     <div class="blog_body">
       <div class="data">
-        <p class="blog_type">{{blog.blog_type}}</p>
+        <p class="blog_type" (click)="goToDetalis(blog.id)">{{blog.blog_type}}</p>
         <p class="blog_date">{{blog.blog_date | date : 'mediumDate'}}</p>
       </div>
       <h5>{{blog.blog_title}}</h5>

@@ -296,7 +296,7 @@ hr {
   color: var(--main-color) !important;
   border-color: var(--main-color);
 }
-.details_page.dark .date p , .overview p{
+.details_page.dark .date p ,.details_page.dark .overview p{
   color: var(--color-text);
 }
 .details_page.dark .date i ,.details_page .date .client  {
