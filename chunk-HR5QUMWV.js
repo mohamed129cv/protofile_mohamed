@@ -1,1 +1,0 @@
-import{b as n}from"./chunk-7NFGSG5W.js";import{Jb as e,Q as i,V as o}from"./chunk-2SEAMOLL.js";var a=class t{constructor(r){this._HttpClient=r}uplodeImg(r){return this._HttpClient.post(n,r)}static \u0275fac=function(p){return new(p||t)(o(e))};static \u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"})};export{a};
