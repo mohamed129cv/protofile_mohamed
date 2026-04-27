@@ -1,0 +1,117 @@
+/** form section */
+.form_section.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.7);
+}
+.form_section.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+.form_section {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: var(--transition);
+  z-index: 90;
+}
+.form_section .blog_form {
+  width: 85%;
+  height: 90vh;
+  overflow: auto;
+  border-radius:10px ;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  background-color: var(--color-text);
+  padding: 1rem;
+}
+
+.form_card {
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form_card h3 {
+  margin-bottom: 10px;
+  color: var(--main-color);
+}
+
+input,
+select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.content_box {
+  border: 1px dashed #ccc;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.remove_btn {
+  background: red;
+  color: white;
+  padding: 0.4rem;
+  border: none;
+  margin-top: 5px;
+}
+.custemPosition {
+  top: 10px;
+  right: 10px;
+}
+.hide_form{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: .3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--red);
+  color: var(--color-text);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 20;
+}
+/** dark mode  */
+.form_section.dark .blog_form{
+    background-color: var(--bg4);
+}
+.form_section.dark  .form_card {
+  background-color: var(--color-dark-card);
+}
+.form_section.dark select ,
+.form_section.dark input::placeholder , .form_section.dark textarea::placeholder {
+
+  color: var(--color-dark-text_1);
+}
+.form_section.dark select ,
+.form_section.dark input , .form_section.dark textarea {
+  background-color: var(--color-main-dark);
+  color: var(--color-dark-text_1);
+}

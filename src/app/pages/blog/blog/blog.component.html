@@ -1,9 +1,9 @@
-<section class="blogs-page" [ngClass]="bg == 'dark'? 'dark' :'light'  " >
+<section class="blogs-page" [ngClass]="bg == 'dark'? 'dark' :'light'  ">
   <article class="hero">
     <div class="container">
       <p class="title fade-up" appFadeUp>our blogs</p>
       <h2>find our all blogs from here</h2>
-      <p>our blogs are written from very research and well known writers so that we can provide you the
+      <p class="dis">our blogs are written from very research and well known writers so that we can provide you the
         best blogs and articles articles for you to read them all along</p>
     </div>
   </article>
@@ -11,15 +11,15 @@
   <article class="blogs-cart my-3">
     <div class="container">
       <section class="header fade-up" appFadeUp>
-        <div class="search" >
+        <div class="search">
           <input type="text" [(ngModel)]="searword" placeholder="search ....." class="form-control">
-          <ul *ngIf="searword" appFadeUp class="fade-up">
+          <ul *ngIf="searword && blogs" appFadeUp class="fade-up">
             @for(blog of blogs | searchBlog : searword ; track $index){
-              <li [routerLink]="['/blog', blog.id]" appFadeUp class="fade-up">{{blog.blog_title}}</li>
+            <li [routerLink]="['/blog', blog.id]">{{blog.blog_title}}</li>
             }
           </ul>
         </div>
-        <span (click)="showLoginSection()"> <i class="fa-solid"
+        <span (click)=" adminMode ? saveData() : open()"> <i class="fa-solid"
             [ngClass]="adminMode ? 'fa-floppy-disk' : 'fa-pen-to-square' "></i></span>
       </section>
       <app-blog-cart [blogs]="blogs" [adminMode]="adminMode"></app-blog-cart>
@@ -28,7 +28,7 @@
   <!--! subscrip  -->
   <article class="subscrip">
     <div class="container">
-      <h3  class="fade-up" appFadeUp> Get our stories delivered From us to your inbox weekly.</h3>
+      <h3 class="fade-up" appFadeUp> Get our stories delivered From us to your inbox weekly.</h3>
       <form class="fade-up" appFadeUp>
         <input type="text" class="form-control" placeholder="Your Email">
         <button type="submit" class="btn btn-light">Get started</button>
@@ -41,18 +41,4 @@
   </article>
 </section>
 
-<section class="login hidden" #login>
-
-  <form >
-    <span class="e"><i class="fa-solid fa-xmark" (click)="exitLoginSection()"></i></span>
-    <h4>Register for the admin mode</h4>
-    <input type="text" class="form-control my-3" name="userName" placeholder="User Name ..." [(ngModel)]="inputUser">
-    <label class="password" >
-      <input [type]=" showPassword ?'text':'password'" class="form-control my-3" name="password" placeholder="Password ...." [(ngModel)]="inputPass">
-     <span (click)="toggleInputToPassword()" > <i class="fa-solid "
-            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i></span>
-    </label>
-    <button type="button" class="btn btn-primary" (click)="submitUser()">Login</button>
-  </form>
-</section>
-
+<app-login [showPopup]="showLoginSection" (close)="hiddenPopup()"></app-login>

@@ -17,7 +17,7 @@ export class FadeUpDirective {
          e.target.classList.remove('show')
        }
       })
-    } ,{threshold:0.2}
+    } ,{threshold:0.4}
   )
     observable.observe(this.el.nativeElement);
 

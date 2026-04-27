@@ -1,19 +1,17 @@
 .analytics-page {
   width: 100%;
-
 }
 .contact {
   width: 100%;
   display: flex;
   justify-content: space-between;
   flex-flow: wrap row;
-  align-items: flex-start; /* مهم */
-
+  align-items: flex-start;
 }
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 980;
 }
 aside {
@@ -27,24 +25,31 @@ aside {
   transition: var(--transition);
 }
 .btn_bars {
-  width: 70px;
-  height: 35px;
+  width: 2.2rem;
+  height: 2.2rem;
   padding: 0.5rem;
-  border-radius: 0.5rem ;
-  background-color: var(--main-color);
-  color: var(--color-text);
-  font-size: 1.3rem;
+  border-radius: 50%;
+  background-color: var(--color-text);
+  color: var(--main-color);
+  font-size: 1rem;
   font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 100px;
-  right: 2px;
+  bottom: 5rem;
+  right: 2rem;
   cursor: pointer;
   opacity: 0;
+  box-shadow: var(--shadow);
   pointer-events: none;
   z-index: 999;
+}
+.btn_bars i {
+  transition: var(--transition);
+}
+.btn_bars i:hover {
+  transform: rotate(90deg);
 }
 aside .informtion {
   display: flex;
@@ -98,7 +103,7 @@ aside ul li.active {
 .details .cart {
   background-color: var(--color-text);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  padding: 0.5rem;
+  padding: 0.8rem;
   border-radius: 0.5rem;
   position: relative;
   transition: var(--transition);
@@ -127,20 +132,26 @@ aside ul li.active {
   color: var(--main-color);
   font-size: 1.3rem;
 }
-.details .progress-bar {
-  width: 100%;
-  height: 5px;
-  border-radius: 45px;
-  background-color: var(--color-muted);
-  position: relative;
+.details .cart h3 {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 7px;
+  border: 1px solid #f8f9fa;
+
 }
-.details .bar {
-  height: 5px;
-  border-radius: 45px;
-  position: absolute;
-  top: 0;
-  left: 0;
+.growth{
+  font-size: .7rem;
+  font-weight: 500;
 }
+.analytics-page.dark .details .cart h3 {
+  background-color: var(--bg4);
+  border: 1px solid  var(--bg4);
+}
+
 .details .cart:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -237,7 +248,7 @@ aside ul li.active {
   .container {
     width: 100%;
   }
-  .contact{
+  .contact {
     position: relative;
   }
   aside {
@@ -270,40 +281,43 @@ aside ul li.active {
 }
 
 /** dark mode  */
-.analytics-page.dark  .chart-card ,
-.analytics-page.dark .details .cart ,
-.analytics-page.dark .show_data  {
-  background-color: var(--bg4);
+.analytics-page.dark .chart-card,
+.analytics-page.dark .show_data {
+  background-color: var(--bg3);
   color: var(--color-text);
 }
-.analytics-page.dark .details .cart .header span{
-  background-color: var(--color-text);
+.analytics-page.dark .details .cart .header span {
+  background-color: var(--bg4);
+}
+.analytics-page.dark .details .cart{
+  color: var(--color-text);
+  background-color: var(--bg3);
+
 }
 .show_data .data-body ul:nth-child(even) {
   background-color: transparent;
 }
 .analytics-page.dark .show_data .data-body ul:hover {
-  background-color:var(--main-color);
+  background-color: var(--main-color);
   color: var(--color-text);
 }
 
 /* arrow */
 @keyframes pulseArrow {
-  
-  from{
+  from {
     transform: scale(1);
   }
-  to{
+  to {
     transform: scale(1.2);
   }
 }
 @keyframes minseArrow {
-from{
-  transform: scale(1);
-}
-to{
-  transform: scale(.8);
-}
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.8);
+  }
 }
 
 .fa-arrow-trend-up {

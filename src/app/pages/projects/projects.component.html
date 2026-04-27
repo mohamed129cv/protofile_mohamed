@@ -4,14 +4,14 @@
     <ul class="search_result" *ngIf="searchWord !==''">
       @for (res of projects | search : searchWord; track $index) {
       <li (click)="searchWord = res.project_title">{{res.project_title}}</li>
-    }@empty {
+      }@empty {
       <li>There is no project by that name. </li>
       }
     </ul>
     <span>
       <i [ngClass]="
     {'fa-pen-to-square fa-solid': !adminMode  ,'fa-regular fa-floppy-disk': adminMode}"
-        (click)=" adminMode ? saveData() : login()"></i>
+        (click)=" adminMode ? saveData() : open()"></i>
     </span>
   </header>
   <h2 class="text-primary mt-5 text-center" [ngClass]="{'text-white ' : bg == 'dark'} ">Our projects</h2>
@@ -20,32 +20,13 @@
     <ul>
       <li [ngClass]="{'active' : typeMode == 'all' }" (click)="getProjects(); typeMode = 'all' ">all</li>
       @for (type of types ; track $index) {
-        <li (click)="typeMode = type ; filterByType(type) " [ngClass]="{'active' : typeMode == type}">{{type}}</li>
+      <li (click)="typeMode = type ; filterByType(type) " [ngClass]="{'active' : typeMode == type}">{{type}}</li>
       }
     </ul>
   </article>
   <article class="projects">
-  <app-projects-cart [projcets]="projects |search : searchWord" [adminMode]="adminMode"></app-projects-cart>
+    <app-projects-cart [projcets]="projects |search : searchWord" [adminMode]="adminMode"></app-projects-cart>
   </article>
 
-
-  <!--! login section  -->
-  <section class="login hidden" #loginSection>
-    <form [formGroup]="singUp" (ngSubmit)="submitLogin()" class="hidden" #popert>
-      <i class="fa-solid fa-circle-xmark exit" (click)="closing()"></i>
-      <h3>Accessing admin mode</h3>
-      <label class="form-label" for="name">Name</label>
-      <input class="form-control" type="text" id="name" placeholder="Enter Your Name ...." formControlName="user">
-      <label class="form-label" for="password">
-        Password
-      </label>
-      <div class="password">
-        <input class="form-control" [type]="showPassword ? 'text' : 'password'  " #passwordInput id="password"
-          placeholder="Enter your Password ..." formControlName="pass">
-        <span (click)="toggleInputToPassword()"> <i class="fa-solid "
-            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i></span>
-      </div>
-      <button type="submit">Login</button>
-    </form>
-  </section>
 </section>
+<app-login [showPopup]="showLoginSection" (close)="hiddenPopup()"></app-login>

@@ -1,11 +1,12 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { BgService } from './core/api/bg.service';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { FooterComponent } from "./pages/footer/footer.component";
 import { NavbarComponent } from "./pages/navbar/navbar.component";
 import { CommonModule } from '@angular/common';
 
+declare let gtag: Function;
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,9 +14,18 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
- constructor(private _bg:BgService, private _NgxSpinnerService:NgxSpinnerService
- ){}
+ constructor(private _bg:BgService, private _NgxSpinnerService:NgxSpinnerService , private router : Router 
+ ){
+  this.router.events.subscribe(event => {
+    if (event instanceof NavigationEnd) {
+      gtag('config', 'G-16155NT0PW', {
+        page_path: event.urlAfterRedirects
+      });
+    }
+  });
+ }
   title = 'protofile';
   @ViewChild('goToUp')goToUp!:ElementRef
   @HostListener('window:scroll' , []) onSc(){

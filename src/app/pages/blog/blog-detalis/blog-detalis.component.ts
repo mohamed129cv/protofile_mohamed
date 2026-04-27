@@ -1,8 +1,8 @@
+import { Iblogs } from './../../../core/interface/iblogs';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { BlogService } from '../../../core/api/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Iblogs } from '../../../core/interface/iblogs';
 import { BgService } from '../../../core/api/bg.service';
 import { FadeUpDirective } from "../../../core/direcitve/fade-up.directive";
 import { FadeLeftDirective } from "../../../core/direcitve/fade-left.directive";
@@ -43,9 +43,13 @@ export class BlogDetalisComponent {
     )
   }
   getAllBlogs() {
-    this._BlogService.getBlog().subscribe(res => {
-      this.allBlogs = res
-    })
+    this._BlogService.getBlog().subscribe((res: Iblogs[]) => {
+      let relatedBlogs = res.filter(blog=>
+        blog.blog_type== this.blog.blog_type && blog.id != this.blog.id)
+
+      this.allBlogs = relatedBlogs.length > 0 ? relatedBlogs : res.slice(0,3)
+     this.allBlogs = this.allBlogs.filter(b=>b.status == 'active')
+      })
   }
   goToBlog(id: number = 0) {
     this._Router.navigate(['blog/', id])

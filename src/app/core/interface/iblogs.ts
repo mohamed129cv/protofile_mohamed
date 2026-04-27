@@ -6,6 +6,7 @@ export interface Iblogs {
   blog_dis : string [] ,
   blog_type : string ,
   blog_date : Date ,
+  status : 'active' | 'inactive' ,
   tag : string [] ,
   content : Icontent []
 }

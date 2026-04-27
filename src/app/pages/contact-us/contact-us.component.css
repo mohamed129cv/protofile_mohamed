@@ -102,11 +102,19 @@
 /*& dark mode  */
 
 .contcat_us.dark{
-  background: var(--bg2);
+  background: var(--color-main-dark);
 }
-.contcat_us.dark p ,.contcat_us.dark h2 ,.contcat_us.dark label{
-  color: var(--color-text);
+.contcat_us.dark p ,.contcat_us.dark h2 ,.contcat_us.dark label {
+  color: var(--color-dark-text_2 );
 }
+.contcat_us.dark input::placeholder ,
+.contcat_us.dark textarea::placeholder,
+.contcat_us.dark input ,
+.contcat_us.dark textarea {
+  background-color: var(--color-dark-card);
+  color: var(--color-dark-text_2);
+}
+
 .contcat_us.dark .myLinks span {
   background-color: var(--main-color) !important;
   color: var(--color-text) !important;

@@ -4,14 +4,28 @@ hr {
   border-color: var(--main-color);
   width: 85%;
   margin: auto;
+  display: none;
 }
 
 .details_page h3 {
-  color: var(--main-color) !important;
-  font-weight: 600;
-  padding: 0.5rem;
+  color: var(--dark) !important;
+  font-size: 1.6rem;
+  font-weight: 900;
+  padding: 0.1rem;
   margin-block: 40px;
-  border-left: 5px solid var(--main-color);
+  position: relative;
+}
+
+.details_page h3 .icon {
+  background-color: var(--color-muted);
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.3rem;
 }
 
 .details_page {
@@ -26,23 +40,23 @@ hr {
   margin-block: 30px;
 }
 .project_details .details h2 {
-  font-size: clamp(1.4rem , 1vw + 1rem ,1.8rem );
+  font-size: clamp(1.4rem, 1vw + 1rem, 1.8rem);
   transition: var(--transition);
 }
 .project_details .details h2:hover {
   color: var(--main-color);
 }
-.project_details .date{
+.project_details .date {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: .4rem;
+  gap: 0.4rem;
 }
-.project_details .date i{
+.project_details .date i {
   color: var(--main-color);
-  margin-block:.5rem ;
+  margin-block: 0.5rem;
 }
-.project_details .date .client{
+.project_details .date .client {
   color: var(--main-color);
   font-weight: 700;
 }
@@ -52,7 +66,7 @@ hr {
   object-fit: cover;
   border-radius: 10px;
 }
-
+/** role  */
 .roles_grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -65,12 +79,12 @@ hr {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  text-align: center ;
+  text-align: center;
   gap: 0.4rem;
   padding: 0.6rem;
   border-radius: 10px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.8rem;
   transition: var(--transition);
   cursor: default;
@@ -96,6 +110,100 @@ hr {
   line-height: 200%;
   margin-top: 4px;
 }
+/** stratges and challenges */
+.collection {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  margin-block: 30px;
+}
+.collection article {
+  width: 45%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid;
+}
+@media screen and (max-width: 992px) {
+  .collection {
+    flex-direction: column;
+  }
+  .collection article {
+    width: 100%;
+  }
+}
+.collection .stra h3 .icon {
+  background-color: #a0dfc2;
+}
+.collection .challenge h3 .icon {
+  background-color: #e0a6ab;
+}
+.collection .challenge {
+  background-color: #f2d2d2;
+  border-color: #e0a6ab;
+}
+.collection .stra {
+  background-color: #d8efcd;
+  border-color: #a0dfc2;
+}
+.collection .challenge h3 {
+  color: #dc3545 !important;
+}
+.collection .stra h3 {
+  color: #198754 !important;
+}
+
+.collection ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; */
+  position: relative;
+  margin-left: 0;
+}
+.details_page.dark .collection .challenge ul li {
+  color: #dc3545;
+}
+.details_page.dark .collection .stra ul li {
+  color: #198754 ;
+}
+.collection ul li {
+  position: relative;
+  padding: 20px;
+}
+.collection li::before {
+  content: "";
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -10px;
+}
+
+.collection .stra ul li::after,
+.collection .challenge ul li::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 1px solid;
+  border-radius: 50%;
+  background-color: var(--color-text);
+  position: absolute;
+  top: 27px;
+  left: -13px;
+}
+
+.collection .stra li::before {
+  background-color: #198754;
+}
+.collection .challenge li::before {
+  background-color: #dc3545;
+}
+.collection .stra ul li::after {
+  border-color: #198754;
+}
+.collection .challenge ul li::after {
+  border-color: #dc3545;
+}
 /** details */
 #carouselExampleCaptions .carousel-item {
   width: 100%;
@@ -107,7 +215,7 @@ hr {
   height: 100%;
   object-fit: contain;
 }
-#carouselExampleCaptions .ctrl{
+#carouselExampleCaptions .ctrl {
   background-color: var(--border);
   color: var(--main-color) !important;
   width: 40px;
@@ -116,7 +224,7 @@ hr {
   top: 50%;
   transition: var(--transition);
 }
-#carouselExampleCaptions .ctrl:hover{
+#carouselExampleCaptions .ctrl:hover {
   background-color: var(--main-color);
   color: var(--color-text);
 }
@@ -182,32 +290,44 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.3rem;
 }
-.charts .chart-card{
+.charts .chart-card {
   box-shadow: var(--shadow);
-  padding: .5rem;
-  border-radius: .5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: .3rem;
+  gap: 0.3rem;
 }
-.apx-chart{
+.apx-chart {
   width: 100%;
 }
-.charts .chart-card:first-child{
+.charts .chart-card:first-child {
   grid-column: span 2;
 }
-.charts .chart-card.end{
+.charts .chart-card.end {
   grid-column: span 2;
 }
-.charts .dontet{
+.charts .dontet {
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 1.2rem;
 }
 /** tool and recommendtion  */
+.tools,
+.recommendation {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  position: relative;
+  background: #f8f9fa;
+}
+.details_page.dark .tools,
+.details_page.dark .recommendation {
+  background: linear-gradient(var(--bg4), var(--bg2));
+}
 .tools ul,
 .recommendation ul {
   padding: 0;
@@ -235,11 +355,11 @@ hr {
   width: 100%;
   padding: 12px 16px;
   border-radius: 0.8rem;
-  background: #f0f4ff;
+  background: var(--color-text);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition:
-  transform 0.6s ease,
-  box-shadow 0.6s ease;
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -277,7 +397,8 @@ hr {
   .charts {
     width: 100%;
   }
-  .charts .chart-card:first-child , .charts .chart-card.end{
+  .charts .chart-card:first-child,
+  .charts .chart-card.end {
     grid-column: span 1;
   }
   .charts .apx-chart {
@@ -286,27 +407,29 @@ hr {
 }
 /** dark mode  */
 .details_page.dark .container {
-  background-color: var(--bg2);
+  background-color: var(--color-main-dark);
 }
-.details_page.dark h2 span ,
-.details_page.dark h2  {
-  color: var(--color-text) !important;
+.details_page.dark h2 span,
+.details_page.dark h2 {
+  color: var(--color-title) !important;
 }
 .details_page.dark h3 {
   color: var(--main-color) !important;
   border-color: var(--main-color);
 }
-.details_page.dark .date p ,.details_page.dark .overview p{
+.details_page.dark .date p,
+.details_page.dark .overview p {
   color: var(--color-text);
 }
-.details_page.dark .date i ,.details_page .date .client  {
+.details_page.dark .date i,
+.details_page .date .client {
   color: var(--main-color);
 }
-.details_page.dark .roles_grid .role_card{
-  background-color: var(--bg4);
+.details_page.dark .roles_grid .role_card {
+  background-color: var(--color-card-dark);
   color: var(--color-text);
 }
-.details_page.dark .roles_grid .role_card:hover{
+.details_page.dark .roles_grid .role_card:hover {
   background-color: var(--main-color);
 }
 .details_page.dark hr {
@@ -333,11 +456,11 @@ hr {
   opacity: 0.7;
 }
 .details_page.dark .charts .chart-card {
-  background-color: var(--bg4);
+  background-color: var(--color-card-dark);
 }
-.details_page.dark .analytics-header ,
+.details_page.dark .analytics-header,
 .details_page.dark .tools ul li,
 .details_page.dark .recommendation ul li {
-  background-color: var(--bg4);
-  color: var(--color-text) ;
+  background-color: var(--color-card-dark);
+  color: var(--color-text);
 }

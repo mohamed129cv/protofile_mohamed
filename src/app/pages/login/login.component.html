@@ -1,0 +1,29 @@
+<section class="login" [ngClass]="showPopup ? 'show' : 'hidden' " #login>
+
+  <form [ngClass]="showPopup ? 'show' : 'hidden' "  >
+    <span class="e" (click)="showPopup = false "><i class="fa-solid fa-xmark" ></i></span>
+    <h4>Register for the admin mode</h4>
+    <input type="email" class="form-control my-3"  placeholder="email ..." [(ngModel)]="inputUser" name="email">
+    <label class="password">
+      <input [type]=" showPassword ?'text':'password'" class="form-control my-3"
+        placeholder="Password ...." [(ngModel)]="inputPass" name="password">
+      <span (click)="toggleInputToPassword()"> <i class="fa-solid "
+          [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i></span>
+    </label>
+    <div class="row">
+      <p (click)="ForgotPassword = true ">Forgot your password?</p>
+      <button type="button" class="btnLogin" (click)="loginWithEmailAndPassword()">Login</button>
+    </div>
+    <button class="logWithGoogle" (click)="loginWithGoogle()" type="button">
+      <img src="https://developers.google.com/identity/images/g-logo.png" width="20">
+      Sign in using Google
+    </button>
+
+    <div class="resetPassword" [ngClass]="ForgotPassword ? 'show' : 'hidden' ">
+      <h5> Reset Password</h5>
+      <span  (click)="ForgotPassword = false" class="backs"><i class="fa-solid fa-arrow-left"></i></span>
+      <input type="email" class="form-control" placeholder="Email" [(ngModel)]="emailReset" name="reset_password">
+      <button type="button" class="btnLogin" (click)="resetPassword()">Send </button>
+    </div>
+  </form>
+</section>

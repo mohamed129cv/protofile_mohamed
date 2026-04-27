@@ -8,7 +8,7 @@ import { Iproject } from '../interface/iproject';
 export class SearchPipe implements PipeTransform {
 
   transform( projects: Iproject[] , title: string): Iproject[]  {
-    
+    if(!title.trim()) return projects
     return projects.filter(pro => pro.project_title.toLocaleLowerCase().trim().includes(title.toLocaleLowerCase().trim()))
   }
 

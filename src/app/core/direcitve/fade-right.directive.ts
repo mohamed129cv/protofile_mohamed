@@ -19,7 +19,7 @@ export class FadeRightDirective {
         }
       })
     }
-  , {threshold:.1})
+  , {threshold:.4})
     observable.observe(this.el.nativeElement)
 }
 

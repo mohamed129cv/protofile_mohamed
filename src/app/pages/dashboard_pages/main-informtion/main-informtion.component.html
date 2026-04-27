@@ -1,0 +1,125 @@
+<section class="informtion" [class.dark]="bg == 'dark' ">
+  <form [formGroup]="informtion" class="informtion_form">
+    <!--! about me   -->
+    <article class="about_me_sec">
+      <h5> About Me</h5>
+      <input type="text" placeholder=" job title" class="form-control" formControlName="jobTitle">
+      <section class="dis row g-2 " formArrayName="description">
+        @for (item of descriptionControls.controls ; track item ; let i = $index) {
+        <div class="col-lg-6  col-12">
+        <div class="group h-100">
+
+          <textarea placeholder="description" class="form-control" [formControlName]="i"></textarea>
+          <button type="button" class="btn btn-danger" (click)="removeControl(i, descriptionControls)"><i
+              class="fa-solid fa-trash"></i> </button>
+        </div>
+        </div>
+        }
+        <button type="button" class="btn btn-primary" (click)="push_description()"><i class="fa-solid fa-plus"></i> add
+          new discrioition</button>
+      </section>
+    </article>
+    <!--! resume   -->
+    <article class="resume" formArrayName='resume'>
+      <h5>resume</h5>
+      <section class="row g-4">
+
+        @for (item of resumeControls.controls ; track item ;let i = $index) {
+
+        <div class="col-lg-3 col-md-4 col-12" [formGroupName]="i">
+          <div class="group ">
+            <h6>course #{{i+1}}</h6>
+
+            <input type="text" placeholder="course name ..." class="form-control " formControlName="course_name">
+            <input type="text" placeholder="course place ..." class="form-control " formControlName="course_place">
+            <input type="text" placeholder="course discription ..." class="form-control"
+              formControlName="resume_description">
+            <!--^ date  -->
+            <div class="row">
+              <div class="col">
+                <label for="start_date form-label">start date course</label>
+                <input type="date" id="start_date" formControlName="start_date" class="form-control">
+              </div>
+              <div class="col">
+                <label for="end_date form-label">end date course</label>
+                <input type="date" id="end_date" formControlName="end_date" class="form-control">
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-danger" (click)="removeControl(i, resumeControls)"><i
+                class="fa-solid fa-trash"></i> </button>
+          </div>
+        </div>
+        }
+      </section>
+
+      <button type="button" class="btn btn-primary" (click)="push_resume()"><i class="fa-solid fa-plus"></i> add new
+        course</button>
+    </article>
+    <!--! achiveements  -->
+    <article formArrayName="achievements" class="achievement">
+      <h5>achievement</h5>
+      <section class="row g-2">
+        @for (item of achievementsControls.controls; track item ;let i= $index) {
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12" [formGroupName]="i" >
+
+            <div class="group" >
+              <h6>achievement #{{i+1}}</h6>
+          <input class="form-control" type="text" placeholder="achievement name ...."
+            formControlName="achievement_name">
+            <div class="icon-wrapper">
+              <input (click)="openIconPicker(item.get('achievement_icon'))" type="text" placeholder="selecte icon /"
+              [value]="item.get('achievement_icon')?.value" class="form-control">
+            <div class="icon-provider" *ngIf="activeControl === item.get('achievement_icon')"
+              [ngClass]="showIcon ? 'show' : 'hidden' ">
+              @for (icon of icons; track $index) {
+                <span (click)="selectIcon(icon)" [class.active]="item.get('achievement_icon')?.value == icon"><i
+                  [class]="'fa-solid fa-'+icon"></i></span>
+              }
+            </div>
+          </div>
+          <input class="form-control" type="number" placeholder="achievement count ...." formControlName="count">
+          <button type="button" class="btn btn-danger" (click)="removeControl(i, achievementsControls)"><i
+              class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+        }
+      </section>
+      <button type="button" class="btn btn-primary" (click)="push_achievement()"><i class="fa-solid fa-plus"></i> add
+        new achievement</button>
+    </article>
+    <!--! service  -->
+    <article formArrayName="services" class="services">
+      <h5>services</h5>
+      <section class="row g-2">
+      @for (item of servicesControls.controls; track item ;let i= $index) {
+      <div class="col-lo-3 col-md-4 col-ms-6 col-12" [formGroupName]="i">
+      <div class="group" >
+        <h6>service no.{{i+1}}</h6>
+        <input class="form-control" type="text" placeholder="services name ...." formControlName="service_name">
+        <textarea class="form-control" type="text" placeholder="services discription ...."
+          formControlName="service_description"></textarea>
+        <div class="icon-wrapper">
+          <input (click)="openIconPicker(item.get('service_icon'))" type="text" placeholder="selecte icon /"
+            [value]="item.get('service_icon')?.value" class="form-control">
+          <div class="icon-provider" *ngIf=" activeControl === item.get('service_icon')"
+            [ngClass]="showIcon ? 'show' : 'hidden' ">
+            @for (icon of icons; track $index) {
+            <span (click)="selectIcon(icon)" [class.active]="item.get('service_icon')?.value == icon"><i
+                [class]="'fa-solid fa-'+icon"></i></span>
+            }
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-danger" (click)="removeControl(i, servicesControls)"><i
+            class="fa-solid fa-trash"></i> </button>
+      </div>
+      </div>
+      }
+      </section>
+      <button type="button" class="btn btn-primary" (click)="push_service()"> <i class="fa-solid fa-plus"></i> add new
+        service</button>
+    </article>
+    <button type="button" class="btn btn-primary" (click)="updateInformtion()">submit</button>
+  </form>
+</section>

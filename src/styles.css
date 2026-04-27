@@ -12,10 +12,17 @@
   --green: #198754;
   --gold: rgb(255, 190, 51);
   --bg2: #1f1f1f;
-  --bg3: #202124;
-  --bg4 : #222831;
+  --bg3: #0f172a;
+
   --border: #757575;
 
+  /*! dark mode  */
+  --bg4 : #0f172a;
+  --color-dark-card: #1e293b ;
+  --color-title : #f1f5f9 ;
+  --color-dark-text_1:#cbd5e1 ;
+  --color-dark-text_2:#94a3b8 ;
+  --color-main-dark : #222831 ;
   --transition: 0.5s all;
   --shadow:
     0rem 4px 13px rgba(0, 0, 0, 0.13),
@@ -95,17 +102,9 @@ body {
   transform: translate(0) scale(1);
 }
 body.dark{
-  background-color: var(--bg3);
+  background-color: var(--bg4);
 }
-
-/* body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark h4,
-body.dark h5,
-body.dark h6,
-body.dark p,
-body.dark label,
-body.dark span{
-  color: #EDEDED  ;
-} */
+::selection{
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}

@@ -1,0 +1,67 @@
+<section class="dashboard" [class.dark]="bg == 'dark'">
+  <div class="overlay" [class.show]="isOpen" (click)="toggleAside()"></div>
+  <span class="bar" (click)="toggleAside()"><i class="fa-solid fa-bars"></i> </span>
+  <aside [class.show]="isOpen">
+    <ul>
+      @for (item of items; track $index) {
+      <li [class.active]="openTap == item.key" (click)="openTap =item.key "> <i [class]="'fa-solid '+ item.icon"></i>  {{item.name}}</li>
+      }
+    </ul>
+  </aside>
+  <main>
+    <article class="das" *ngIf="openTap == 'Profile' ">
+      <header>
+        <p class="icon"><i class="fa-solid fa-star"></i>
+        </p>
+        <div>
+          <h2>Dashboard</h2>
+          <p>Welcome to the dashboard! Here you can find an overview of your activities and statistics.</p>
+        </div>
+      </header>
+      <!--! profile  -->
+      <section class="profile">
+
+        <div class="cover"></div>
+
+        <div class="info" *ngIf="user">
+          <img class="avatar" [src]="user.photoURL || 'https://via.placeholder.com/150'">
+
+          <h2>{{ user.displayName || 'Admin' }}</h2>
+          <p>{{ user.email }}</p>
+        </div>
+
+        <!-- 🔒 Change Password -->
+        <form [formGroup]="form" class="password-form">
+
+          <h3>Change Password</h3>
+
+          <input type="password" placeholder="Old Password" formControlName="oldPass" class="form-control">
+          <input type="password" placeholder="New Password" formControlName="newPass" class="form-control">
+
+          <button type="submit" (click)="updatePassword()">Update Password</button>
+
+        </form>
+
+      </section>
+      <!--! content   -->
+      <!-- <article>
+        <section class="stats">
+          <div class="stat-card">
+            <h3>Projects</h3>
+            <p></p>
+          </div>
+          <div class="stat-card">
+            <h3>Blogs</h3>
+            <p></p>
+          </div>
+        </section>
+
+      </article> -->
+
+
+    </article>
+    <app-main-informtion *ngIf="openTap == 'informtion' "></app-main-informtion>
+    <app-project-dash *ngIf="openTap == 'projects' "></app-project-dash>
+    <app-blog-dash *ngIf="openTap == 'blogs' "></app-blog-dash>
+  </main>
+</section>

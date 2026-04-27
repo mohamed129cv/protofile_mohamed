@@ -14,7 +14,8 @@ export interface Iproject {
   date_start: Date,
   date_end: Date,
   recommendations: Irecommendtion[],
-  client_name: string
+  client_name: string , 
+  status : string 
 }
 export interface Itools {
   tool: string

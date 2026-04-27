@@ -33,15 +33,15 @@
           </div>
 
           <h3>
-            {{clcPresent(item.key)}}%
-            <i class="fa-solid" [style.color]="getColor(item.key)" [ngClass]="getTrend(item.key)">
-            </i>
+            {{formatNumber(getLastNumber(item.key))}}
           </h3>
 
-          <div class="progress-bar">
-            <p class="bar" [style.width.%]="getSafePercent(item.key)" [style.background]="getColor(item.key)">
-            </p>
+          <div class="growth" [style.color]="getColor(item.key)">
+              Campaign Impact {{formatNumber(getGrowth(item.key))}} <i class="fa-solid" [style.color]="getColor(item.key)" [ngClass]="getTrend(item.key)">
+            </i>
+
           </div>
+
         </article>
       </section>
 

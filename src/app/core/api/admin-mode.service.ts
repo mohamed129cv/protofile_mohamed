@@ -9,7 +9,8 @@ export class AdminModeService {
   constructor() { }
   adminMode = new BehaviorSubject<boolean>(false)
   $adminMode = this.adminMode.asObservable()
-  toggleAdminMode(value: boolean) {
+  toggleAdminMode(value: boolean ) {
+    localStorage.setItem('adminMode', value.toString())
     this.adminMode.next(value)
   }
   getAdminMode() {

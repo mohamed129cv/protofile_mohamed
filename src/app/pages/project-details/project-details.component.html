@@ -2,53 +2,55 @@
   <div class="container">
     <section class="project_details">
       <article class="details">
-        <h2 class="fade-left" appFadeLeft>{{project.project_title}} <span class="text-black-50 fs-6">({{diffInMonths( project.date_start,project.date_end
+        <h2 class="fade-left" appFadeLeft>{{project.project_title}} <span class="text-black-50 fs-6">({{diffInMonths(
+            project.date_start,project.date_end
             )}}Month)</span></h2>
         <div class="date">
           <p> <span class="client">client</span> : {{project.client_name}}</p>
           <p> <span class="client">type</span> : {{project.project_type}}</p>
           <p class="start_deta"><i class="fa-solid fa-calendar"></i> {{project.date_start}}</p>
         </div>
-          <img [src]="project.project_poster" class="fade-right" appFadeRight [alt]="project.project_title">
+        <img [src]="project.project_poster" class="fade-right" appFadeRight [alt]="project.project_title">
       </article>
       <div class="roles_grid">
-  @for (role of project.roles; track $index) {
-    <div class="role_card">
-      <i class="fa-solid fa-layer-group"></i>
-      <span>{{role.role}}</span>
-    </div>
-  }
-</div>
+        @for (role of project.roles; track $index) {
+        <div class="role_card fade-up" appFadeUp>
+          <i class="fa-solid fa-layer-group"></i>
+          <span>{{role.role}}</span>
+        </div>
+        }
+      </div>
     </section>
     <!--& overview  -->
     <article class="overview">
-      <h3 class="fade-up" appFadeUp>Project Overview :</h3>
+      <h3 class="fade-up" appFadeUp> <span class="icon"><i class="fa-regular fa-file-alt"></i></span> Project Overview :</h3>
       <p class="fade-up" appFadeUp>{{project.project_dis}}</p>
     </article>
-    <hr class="fade-up " appFadeUp>
-    <!--& challenges  -->
-    <article class="challenge">
-      <h3 class="fade-up" appFadeUp>challenges</h3>
-      <ol type="1">
-        @for (c of project.challenges; track $index) {
-        <li class="fade-up " appFadeUp>{{c.challenge}}</li>
-        }
-      </ol>
-    </article>
-    <hr class="fade-up " appFadeUp>
-    <!--& stratges  -->
-    <article class="stra">
-      <h3 class="fade-up" appFadeUp>strategic</h3>
-      <ol>
-        @for (str of project.strategics; track $index) {
-        <li class="fade-up " appFadeUp>{{str.strategic}}</li>
-        }
-      </ol>
-    </article>
+    <div class="collection">
+
+      <!--& challenges  -->
+      <article class="challenge">
+        <ul >
+          <h3 class="fade-up" appFadeUp><span class="icon"><i class="fa-solid fa-triangle-exclamation"></i></span> challenges</h3>
+          @for (c of project.challenges; track $index) {
+          <li class="fade-up " appFadeUp>{{c.challenge}}</li>
+          }
+        </ul>
+      </article>
+      <!--& stratges  -->
+      <article class="stra">
+        <h3 class="fade-up" appFadeUp><span class="icon"><i class="fa-solid fa-chess-knight"></i></span> strategic Approach</h3>
+        <ul>
+          @for (str of project.strategics; track $index) {
+          <li class="fade-up " appFadeUp>{{str.strategic}}</li>
+          }
+        </ul>
+      </article>
+    </div>
     <!--& tools  -->
     <hr class="fade-up " appFadeUp>
     <article class="tools">
-      <h3 class="fade-up" appFadeUp>Tools</h3>
+      <h3 class="fade-up" appFadeUp> <span class="icon"><i class="fa-solid fa-tools"></i></span> Tools</h3>
       <ul>
         @for (tool of project.tools; track $index) {
         <li class="fade-up" appFadeUp><span>{{$index + 1}}</span> {{tool.tool}}</li>

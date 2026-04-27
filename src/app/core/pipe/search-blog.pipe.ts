@@ -8,11 +8,11 @@ import { Iblogs } from '../interface/iblogs';
 export class SearchBlogPipe implements PipeTransform {
 
   transform(blogs: Iblogs[] ,searchWord: string) {
-    if(!searchWord) return 
+    if(!searchWord) return blogs
       if (!blogs) return [];
 
     let word = searchWord.toLowerCase().trim()
-    return blogs.filter(blog=>blog.blog_title.toLowerCase().trim().includes(word))
+    return blogs.filter(blog=>blog.blog_title.toLowerCase().trim().includes(word) || blog.tag.some(t=>t.toLowerCase().trim().includes(word)) )
   }
 
 }

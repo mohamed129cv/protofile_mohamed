@@ -180,10 +180,26 @@ header .search_result li:hover{
 }
 .login form button {
   padding: 0.5rem;
-  background-color: var(--main-color);
-  color: var(--color-text);
   border-radius: 0.3rem;
   border: none;
+  width: 100%;
+  height: 40px;
+  box-shadow: var(--shadow);
+}
+.login form button.btnLogin {
+  background-color: var(--main-color);
+  color: var(--color-text);
+}
+.login form button.logWithGoogle {
+  background-color: var(--color-text);
+  color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+}
+.project_page.dark .login form button.logWithGoogle {
+  background-color: var(--color-dark-card);
+  color: var(--color-dark-text_1);
 }
 .login .exit {
   position: absolute;
@@ -211,12 +227,12 @@ header .search_result li:hover{
 /*& dark mode  */
 
 .project_page.dark header input {
-  background-color: var(--bg4);
-  color:var(--color-text) ;
+  background-color: var(--color-dark-card);
+  color:var(--color-title) ;
   border-color:transparent ;
 }
 .project_page.dark header input::placeholder {
-  color: var(--color-text);
+  color: var(--bg4);
 }
 .project_page.dark header span:hover  {
   background-color: var(--main-color);
@@ -228,28 +244,29 @@ header .search_result li:hover{
   color: var(--color-text);
 }
 .project_page.dark header .search_result{
-  background-color: var(--bg4);
-  color: var(--color-text);
+  background-color: var(--color-dark-card);
+  color: var(--color-title);
 }
 .project_page.dark header .search_result li:hover{
   background-color: var(--main-color);
-  color: var(--color-text);
+  color: var(--color-title);
 }
 .project_page.dark .type span,
 .project_page.dark .type ul li{
-  background-color: var(--bg4);
-  color: var(--color-text);
+  background-color: var(--color-dark-card);
+  color: var(--color-dark-text_2);
 }
 .project_page.dark .type ul li:hover,
 .project_page.dark .type ul li.active{
   background-color: var(--main-color);
+  color: var(--color-dark-text_1);
 }
 .project_page.dark .login form {
-  background-color: var(--bg4);
+  background-color: var(--color-dark-card);
 }
 
 .project_page.dark .login form h3 {
-  color: var(--main-color) !important;
+  color: var(--color-dark-text_1) !important;
 }
 .project_page.dark .login form button {
   background-color: var(--main-color);

@@ -1,27 +1,105 @@
-# ProtoflieMohamed
+# 🚀 Portfolio System | v2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4.
+![Status](https://img.shields.io/badge/status-active-success?style=for-the-badge)
+![Angular](https://img.shields.io/badge/Angular-Framework-DD0031?style=for-the-badge&logo=angular)
+![Firebase](https://img.shields.io/badge/Firebase-Auth-FFCA28?style=for-the-badge&logo=firebase)
+![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📌 Overview
 
-## Code scaffolding
+A modern **Portfolio System** built to showcase projects, blogs, and professional experience in **Digital Marketing** in a clean and interactive way.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The system focuses on performance, usability, and a modern SaaS-style UI.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🎯 Features
 
-## Running unit tests
+- 🧑‍💼 Admin Dashboard (Protected Access)
+- 📁 Projects Management with filtering & details
+- 📝 Blog System with search & tags
+- 📊 Analytics for projects and blogs
+- 🔐 Authentication (Email + Google Login)
+- 🔄 Password Reset functionality
+- 📱 Fully Responsive UI
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🛠️ Tech Stack
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 🎨 Frontend
+- Angular
+- Bootstrap
+- Font Awesome
+- ngx-toastr
+- ngx-spinner
+- Firebase Authentication
 
-## Further help
+### ⚙️ Backend
+- Xano (Backend API Service)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 📦 System Modules
+
+### 🏠 Home Page
+- Services overview
+- Courses section
+- Introduction about the system
+
+---
+
+### 📁 Projects Page
+- Display all projects
+- Search and filtering system
+- Detailed project view
+- Performance analytics per project
+- Time-based results tracking
+
+---
+
+### 📝 Blog Page
+- Modern blog layout
+- Search by title, tag, or category
+- Clean and organized reading experience
+
+---
+
+### 📞 Contact Page
+- Direct WhatsApp contact integration
+
+---
+
+### ⚙️ Dashboard (Admin Panel)
+Protected area for administrators only:
+
+- Full control over website content
+- Add / Edit / Delete Projects
+- Add / Edit / Delete Blogs
+- Manage services & courses
+- View analytics (published vs unpublished content)
+
+---
+
+## 🔐 Authentication System
+
+- Email & Password Login
+- Google Authentication
+- Secure Admin Access
+- Password Reset via Email
+
+---
+
+## 🚀 Installation & Setup
+
+```bash id="install1"
+# Clone repository
+git clone https://github.com/your-username/portfolio-system.git
+
+# Install dependencies
+npm install
+
+# Run project
+ng serve

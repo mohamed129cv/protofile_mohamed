@@ -1,0 +1,236 @@
+.dashboard {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+/** aside section  */
+aside {
+  width: 240px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 0 15px 15px 0;
+}
+aside ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 3rem;
+  color: var(--dark);
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+aside ul li {
+  transition: var(--transition);
+  padding: 0.5rem;
+  width: 100%;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+}
+aside ul li:hover,
+aside ul li.active {
+  color: var(--color-text);
+  background-color: var(--main-color);
+  border-radius: 0.3rem;
+}
+.overlay {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: var(--transition);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 990;
+}
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.bar {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  padding: 0.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  background-color: var(--color-text);
+  color: var(--main-color);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+}
+.bar i {
+  transition: var(--transition);
+}
+.bar i:hover {
+  transform: rotate(90deg);
+}
+@media screen and (max-width: 782px) {
+  .dashboard {
+    flex-direction: column;
+  }
+  aside {
+    flex: 0 0 300px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: auto;
+    transform: translateX(-100%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 999;
+  }
+  aside.show {
+    transform: translateX(0);
+    left: 0;
+    pointer-events: auto;
+    opacity: 1;
+    height: 100%;
+  }
+  .bar {
+    z-index: 999;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+/** profile  */
+.profile {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  background: var(--color-text);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  padding-bottom: 1.5rem;
+}
+.profile .info{
+  position: relative;
+  z-index: 1;
+}
+.cover {
+  height: 180px;
+  background: linear-gradient(135deg, var(--color-primary), var(--main-color));
+
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 5px solid white;
+  margin-top: -65px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile h2 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+
+.profile p {
+  color: gray;
+  margin-bottom: 1rem;
+}
+.password-form {
+  margin-top: 20px;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.password-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+.password-form input:focus {
+  border-color: var(--main-color);
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.password-form button {
+  background: var(--main-color);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.password-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/** header section  */
+main {
+  width: 100%;
+  padding: clamp(1rem, 2vw, 1.3rem);
+}
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow);
+  gap: 1rem;
+  background-color: var(--color-text);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+header .icon {
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  background-color: var(--main-color);
+  border-radius: 0.3rem;
+}
+header h2 {
+  color: var(--main-color);
+  font-size: 1.5rem;
+}
+
+/** dark mode  */
+
+.dashboard.dark header,
+.dashboard.dark aside {
+  background-color: var(--color-dark-card);
+  color: var(--color-title);
+}
+.dashboard.dark aside ul {
+  color: var(--color-title);
+}

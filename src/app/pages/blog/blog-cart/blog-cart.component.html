@@ -12,123 +12,16 @@
     </div>
     <div class="btns">
       <button class="btn" [ngClass]="bg =='dark' ?'btn-light' : '' "  (click)="goToDetalis(blog.id)"> Read More <i class="fa-solid fa-arrow-right"></i></button>
-      <button class="btn btn-primary"  *ngIf="adminMode" (click)="enableEdit(blog.id)"> Update Blog </button>
+      <button class="btn btn-primary"  *ngIf="adminMode" (click)="openEdit(blog)"> Update Blog </button>
       <button class="btn btn-danger" (click)="delBlog(blog.id)" *ngIf="adminMode"> Delete Blog </button>
     </div>
   </article>
   }
   <!--* add new blog  -->
-  <article class="add_blog fade-up" appFadeUp (click)="showFormSection()" *ngIf="adminMode">
+  <article class="add_blog fade-up" appFadeUp (click)="show = true ; editMode = false ; my_blog = null " *ngIf="adminMode">
     Add New Blog
   </article>
 </section>
 
 <!--* form section  -->
-<section class="form_section hidden" #form_group>
-
-<form [formGroup]="Form_blog" class="blog_form" #form_group>
-  <span class="hide_form" (click)="exitFormSection()"><i class="fa-solid fa-xmark"></i></span>
-  <!--! Basic Info -->
-  <div class="form_card" >
-    <h3 class="fade-up" appFadeUp >Basic Info</h3>
-
-    <input class="fade-up" appFadeUp formControlName="author" placeholder="Author">
-    <input class="fade-up" appFadeUp formControlName="blog_title" placeholder="Blog Title">
-    <input class="fade-up" appFadeUp formControlName="blog_type" placeholder="Type">
-    <input class="fade-up" appFadeUp formControlName="blog_date" type="date">
-    <div class="poster_form d-flex justify-content-between g-2">
-      <input class="fade-up" appFadeUp   type="file" (change)="uplodeImg($event)">
-      <img width="150px" height="150px" [src]="imgsrc || './assets/notFoundImg.jpg' " alt="" class="fade-up" appFadeUp >
-    </div>
-  </div>
-
-  <!-- 🟩 Description -->
-  <div class="form_card position-relative">
-    <h3 class="fade-up" appFadeUp>Description</h3>
-
-    <div formArrayName="blog_dis">
-      @for (d of getDis.controls ; track d ; let i = $index) {
-      <button type="button" (click)="addDis()" appFadeUp class="btn btn-primary fade-up position-absolute custemPosition">+ Add
-        Discption</button>
-      <div class="row position-relative w-100">
-        <label class="">
-          <button type="button" (click)="removeContent(i , getDis)"
-         appFadeUp   class="btn fade-up btn-danger position-absolute top-0 end-0  "><i class="fa-solid fa-xmark"></i> </button>
-
-        </label>
-        <textarea appFadeUp [formControlName]="i" class="w-75 fade-up" placeholder="Description">
-        </textarea>
-        </div>
-      }
-    </div>
-
-  </div>
-
-  <!--! Tags -->
-  <div class="form_card position-relative">
-    <h3 appFadeUp class="fade-up">Tags</h3>
-
-    <button type="button" (click)="addTag()" class="btn btn-primary position-absolute custemPosition">+ Add Tag</button>
-    <div formArrayName="tag" class="position-relative">
-      @for (t of getTag.controls; track t ; let i = $index) {
-      <div class="row">
-        <label>
-          <button type="button" (click)="removeContent(i , getTag)"
-            class="btn btn-danger position-absolute top-0 end-0 "><i class="fa-solid fa-xmark"></i></button>
-        </label>
-        <input appFadeUp  [formControlName]="i" placeholder="Tag" class="fade-up w-75">
-      </div>
-      }
-    </div>
-
-  </div>
-
-  <!--! Content -->
-  <div class="form_card">
-    <h3 class="fade-up" appFadeUp>Content Sections</h3>
-    <div formArrayName="content">
-      @for (c of contentControl.controls; track c ; let i = $index) {
-      <div class="content_box" [formGroupName]="i">
-
-        <input class="fade-up" appFadeUp formControlName="title" placeholder="Section Title">
-
-        <select formControlName="type" class="fade-up mx-3" appFadeUp>
-          <option value="image">Image</option>
-          <option value="video">Video</option>
-        </select>
-
-        <input formControlName="poster"  class="fade-up" appFadeUp type="file">
-        <!-- subjects -->
-        <div formArrayName="subject">
-          @for (s of getSubject(i).controls; track s ; let j = $index) {
-          <div class="row">
-            <label for="pr" class="position-relative">
-              <textarea [formControlName]="j" placeholder="Paragraph" name="pr" class="w-75 my-2">
-              </textarea>
-                <button (click)="removeSubject(i,j)" class="btn btn-danger position-absolute top-0 end-0 "><i
-                  class="fa-solid fa-xmark"></i></button>
-            </label>
-          </div>
-          }
-        </div>
-
-        <button (click)="addSub(i)" class="btn btn-primary mx-2">+ Add Paragraph</button>
-
-        <button class="btn btn-danger" (click)=" removeContent(i ,contentControl )">Remove Section</button>
-      </div>
-      }
-    </div>
-
-    <button (click)="addContent()" class="btn btn-primary">+ Add Section</button>
-  </div>
-
-  <button class="btn btn-primary" type="button" (click)="editMode ? updateBlog(): submit()">
-    @if (editMode) {
-      Updeat blog
-    }@else{
-      Publish
-    }
-  </button>
-
-</form>
-</section>
+<app-blog-form [eidtMode]="editMode" [show]="show" (close)="show = false" [blog]="my_blog" (refresh)="getBlogs()" ></app-blog-form>

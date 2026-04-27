@@ -14,72 +14,93 @@
         <img src="./assets/mohamed_re.png" alt="my_image" class="fade-left" appFadeLeft>
       </article>
       <article class="about_me_text">
-        <h3 class="title fade-up" appFadeUp>I am A Digital Marketing Specialist</h3>
-        <p class="fade-left" appFadeLeft>
-          Business Administration Graduate specialized in Digital Marketing. Skilled in social media management, paid
-          advertising, content creation, and performance analysis. Focused on delivering high ROI and building strong
-          online brand presence.
+        <h3 class="title fade-up" appFadeUp>I’m a {{data.jobTitle}}</h3>
+        @for(dis of data.description ; track $index){
+        <p [ngClass]="$index%2 ? 'fade-left' : 'fade-right'" appFadeRight appFadeLeft>
+          {{dis}}
         </p>
-        <p class="fade-right" appFadeRight>
-          Experienced in creating data-driven marketing strategies, optimizing campaigns for better conversion rates,
-          and
-          helping businesses reach their target audience effectively. Always eager to learn new trends and tools to stay
-          ahead in the fast-paced digital marketing world..
-        </p>
+        }
         <button type="button" class="btn btn-primary m-2">DOWNLOAD CV</button>
         <button type="button" class="btn btn-outline-primary" [routerLink]="'/project'">VIEW PROJECTS</button>
       </article>
 
     </section>
   </article>
-  <!--& About me  -->
-  <article class="resume">
-    <section class="container">
-      <p class="fade-up" appFadeUp>MY resume</p>
-      <h3 class="fade-up mb-5" appFadeUp>Education</h3>
-      <div class="resume-content">
-        <article class="card fade-up" appFadeUp>
-          <h6 class="edu-title">Faculty of Commerce</h6>
-          <p>Business Administration</p>
-          <p>
-            <i class="fa fa-calendar-days"></i> 2021-2025
-          </p>
-          <p>
-            <i class="fa-solid fa-location-dot"></i>Beni Suef
-          </p>
-        </article>
-        <article class="card fade-up" appFadeUp>
-          <h6 class="edu-title">Digital Egypt Builders Initiative (DEBI)</h6>
-          <p>Digital Marketing</p>
-          <p>
-            <i class="fa fa-calendar-days"></i> 2025
-          </p>
-          <p>
-            <i class="fa-solid fa-location-dot"></i> Online
-          </p>
-        </article>
-        <article class="card fade-up" appFadeUp>
-          <h6 class="edu-title">classera</h6>
-          <p>Social media advertising management</p>
-          <p>
-            <i class="fa fa-calendar-days"></i> 2025
-          </p>
-          <p>
-            <i class="fa-solid fa-location-dot"></i> Online
-          </p>
-        </article>
-      </div>
-    </section>
-  </article>
+  <!--& resume me  -->
+ <article class="resume">
+  <section class="container">
+
+    <p class="section-subtitle fade-up" appFadeUp>My Resume</p>
+    <h3 class="section-title fade-up">Education</h3>
+
+    <div class="resume-content">
+
+      @for(course of data.resume ; track $index){
+
+      <article class="card fade-up" appFadeUp>
+
+        <div class="left-line"></div>
+
+        <div class="content">
+          <h6 class="edu-title">{{course.course_name}}</h6>
+
+          <p class="desc">{{course.resume_description}}</p>
+
+          <div class="meta">
+            <span>
+              <i class="fa fa-calendar-days"></i>
+              {{course.start_date}}
+            </span>
+
+            <span>
+              <i class="fa-solid fa-location-dot"></i>
+              {{course.course_place}}
+            </span>
+          </div>
+        </div>
+
+      </article>
+
+      }
+
+    </div>
+
+  </section>
+</article>
   <!--& projects  -->
   <article class="my-project">
-    <h2 class="fade-up " appFadeUp>my projects</h2>
+
+  <div class="container">
+
+    <h2 class="section-title fade-up" appFadeUp>
+      My Projects
+    </h2>
+
+    <p class="section-subtitle fade-up" appFadeUp>
+      Real-world work and case studies I've built
+    </p>
+
     <section class="projects_contect">
-      <!--& project 1  -->
-      <app-projects-cart [projcets]="projects" [adminMode]="false"></app-projects-cart>
+
+      <app-projects-cart
+        [projcets]="projects"
+        [adminMode]="false">
+      </app-projects-cart>
+
     </section>
-    <button class="btn_pro fade-up btn_p" appFadeUp [routerLink]="'/project'">show more projects </button>
-  </article>
+
+    <div class="cta">
+      <button
+        class="btn_pro fade-up btn_p"
+        appFadeUp
+        [routerLink]="'/project'">
+        View All Projects →
+      </button>
+    </div>
+
+  </div>
+
+</article>
   <!--& skills  -->
   <!-- <article class="my_skills">
     <h2 class="fade-up" appFadeUp>my skills</h2>
@@ -109,136 +130,115 @@
     </section>
   </article> -->
   <!--& My Achievements  -->
-  <article class="achievements">
-    <h2>My Achievements</h2>
-    <section class="achievements_contect" #achievement>
-      <!--! client  -->
-      <div class="achievement fade-right" appFadeRight>
-        <i class="fa-solid fa-users"></i>
-        <p class="achievement_number">{{counts.client}} + Clients</p>
+ <article class="achievements">
+  <h2 class="section-title">My Achievements</h2>
+
+  <section class="achievements_contect" #achievement>
+
+    @for (item of data.achievements ; track $index) {
+
+    <div class="achievement fade-up" appFadeUp>
+      <div class="icon">
+        <i [class]="'fa-solid fa-'+ item.achievement_icon "></i>
       </div>
 
-      <!--! Number Of project  -->
-      <div class="achievement fade-left" appFadeLeft>
-        <i class="fa-solid fa-bullseye"></i>
-        <p>{{counts.project}} + Buyer Personas Built</p>
-      </div>
-      <!--! Number Of Campaigns  -->
-      <div class="achievement fade-left" appFadeLeft>
-        <i class="fa-solid fa-fire"></i>
-        <p>{{counts.Campaigns}} + Underperforming Campaigns Turned Profitable</p>
-      </div>
-
-      <!--! Number of Industries  -->
-      <div class="achievement fade-right" appFadeRight>
-        <i class="fa-solid fa-globe"></i>
-        <p>{{counts.Industries}} Industries Served </p>
-      </div>
-      <!--! Number of certificates  -->
-      <div class="achievement fade-right" appFadeRight>
-        <i class="fa-solid fa-trophy"></i>
-        <p>{{counts.certificate}} + Brands Successfully Scaled </p>
-      </div>
-
-      <!--! Number of working hours  -->
-      <div class="achievement fade-left" appFadeLeft>
-        <i class="fa-regular fa-clock"></i>
-        <p>{{counts.hours}} + Number of working hours</p>
-      </div>
-
-    </section>
-  </article>
-
-  <!--& Services  -->
-
-  <article class="Services">
-    <h2 class="fade-up" appFadeUp>Services</h2>
-    <section class="Services_contect">
-      <!--& service 1  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-bullhorn"></i>
+      <p class="achievement_number">
+        <span class="count">
+          {{ counts[item.achievement_name] }}+
         </span>
-        <h3>Digital Marketing Strategy</h3>
-        <p>Planning and managing ad campaigns across Facebook, Google, and other social media platforms.</p>
-      </div>
-
-      <!--& service 2  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-envelope-open-text"></i>
+        <span class="label">
+          {{item.achievement_name}}
         </span>
-        <h3>Email Marketing</h3>
-        <p>Designing and executing email campaigns to boost engagement and conversions.</p>
-      </div>
-
-      <!--& service 3  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-pen-nib"></i>
-        </span>
-        <h3>Paid Advertising Services</h3>
-        <p>Creating compelling marketing content and high-performing ad creatives.</p>
-      </div>
-
-      <!--& service 4  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-magnifying-glass-chart"></i>
-        </span>
-        <h3>Customer Journey Mapping</h3>
-        <p>Optimizing user experience and improving search engine rankings.</p>
-      </div>
-
-      <!--& service 5  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-laptop-code"></i>
-        </span>
-        <h3>Landing Page Optimization</h3>
-        <p>Enhancing landing pages to increase conversions and engagement.</p>
-      </div>
-
-      <!--& service 6  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-chart-line"></i>
-        </span>
-        <h3>Content Strategy Specialist</h3>
-        <p>Developing data-driven content strategies to maximize campaign performance.</p>
-      </div>
-
-      <!--& service 7  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-funnel-dollar"></i>
-        </span>
-        <h3>Ad Campaign Manager</h3>
-        <p>Building and managing sales funnels to drive higher conversions.</p>
-      </div>
-
-      <!--& service 8  -->
-      <div class="service-card fade-up" appFadeUp>
-        <span>
-          <i class="fa-solid fa-bullseye"></i>
-        </span>
-        <h3>Performance Marketing</h3>
-        <p>Executing results-oriented campaigns to strengthen brand identity and ROI.</p>
-      </div>
-    </section>
-  </article>
-  <article class="blogs">
-    <div class="container">
-
-      <h3 class="fade-up" appFadeUp>Learn SEO, Social Media & Digital Marketing Strategies</h3>
-      <p class="fade-up" appFadeUp>
-        Discover practical tips and proven strategies in SEO, content marketing, and paid ads
-        to help you drive traffic, generate leads, and grow your business online.   <a [routerLink]="['/blog']">
-        Read Full Article
-      </a>
       </p>
     </div>
-  </article>
+
+    }
+
+  </section>
+</article>
+  <!--& Services  -->
+<article class="Services">
+  <h2 class="section-title fade-up" appFadeUp>
+    Our Services
+  </h2>
+
+  <section class="Services_contect">
+    @for (item of data.services ; track $index) {
+
+    <div class="service-card fade-up" appFadeUp>
+      <div class="icon">
+        <i [class]="'fa-solid fa-'+item.service_icon"></i>
+      </div>
+
+      <h3>{{item.service_name}}</h3>
+
+      <p>{{item.service_description}}</p>
+
+      <span class="arrow">
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </div>
+
+    }
+  </section>
+</article>
+  <!--& blogs  -->
+<article class="blogs">
+  <div class="container">
+
+    <!-- LEFT -->
+    <section class="text">
+      <span class="badge">Digital Marketing</span>
+
+      <h3>
+        Grow Faster with Data-Driven Marketing
+      </h3>
+
+      <p>
+        Discover proven SEO, content, and paid ads strategies to boost traffic,
+        increase conversions, and scale your business.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" [routerLink]="['/blog']">Explore Articles</a>
+        <a class="btn ghost">Get Started</a>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats">
+        <div class="stat">
+          <h4>+74K</h4>
+          <span>Monthly Visitors</span>
+        </div>
+
+        <div class="stat">
+          <h4>{{blogs.length}}</h4>
+          <span>Articles</span>
+        </div>
+
+        <div class="stat">
+          <h4>+32%</h4>
+          <span>Conversion Growth</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT -->
+    <section class="img_box">
+      <div class="img_container">
+        <img src="assets/newspapers-laptop-online-news-isolated_488220-8307.avif" alt="">
+      </div>
+
+      <!-- FLOATING CARD -->
+      <div class="floating-card">
+        <p>Campaign Performance</p>
+        <h4>+18.4%</h4>
+        <span>vs last campaign</span>
+      </div>
+    </section>
+
+  </div>
+</article>
   <article class="blog_list">
     <div class="container">
       <div class="section_header">

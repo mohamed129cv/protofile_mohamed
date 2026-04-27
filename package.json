@@ -23,6 +23,7 @@
     "bootstrap": "^5.3.8",
     "chart.js": "^4.5.1",
     "emailjs": "^5.0.0",
+    "firebase": "^12.12.1",
     "ng-apexcharts": "^1.7.5",
     "ngx-chartjs": "^0.0.1",
     "ngx-spinner": "^17.0.0",

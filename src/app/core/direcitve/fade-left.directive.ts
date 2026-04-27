@@ -19,7 +19,7 @@ export class FadeLeftDirective {
         e.target.classList.remove("show")
         }
       })
-    }, {threshold: .1})
+    }, {threshold: .4})
     observable.observe(this.el.nativeElement)
   }
 
