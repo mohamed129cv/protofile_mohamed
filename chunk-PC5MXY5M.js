@@ -1,0 +1,1 @@
+var t="https://686d111714219674dcca4e2a.mockapi.io/protfile",i="https://api.cloudinary.com/v1_1/djmryz78r/image/upload",o="https://x8ki-letl-twmt.n7.xano.io/api:00H6JGOa",p="https://x8ki-letl-twmt.n7.xano.io/api:Jz-5r2B7/main_informtion";export{t as a,i as b,o as c,p as d};

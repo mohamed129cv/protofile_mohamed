@@ -1,1 +1,0 @@
-var t="https://686d111714219674dcca4e2a.mockapi.io/protfile",a="https://api.cloudinary.com/v1_1/djmryz78r/image/upload",i="https://x8ki-letl-twmt.n7.xano.io/api:00H6JGOa";export{t as a,a as b,i as c};

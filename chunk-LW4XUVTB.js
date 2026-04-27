@@ -1,0 +1,1 @@
+import{aa as n}from"./chunk-ZKSJM3UO.js";var i=class t{transform(e,r=25){if(e)return e.length>r?`${e.slice(0,r)}...`:e}static \u0275fac=function(r){return new(r||t)};static \u0275pipe=n({name:"projectDis",type:t,pure:!0,standalone:!0})};export{i as a};

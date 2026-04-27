@@ -1,0 +1,1 @@
+import{aa as n}from"./chunk-ZKSJM3UO.js";var s=class t{transform(e,r){if(!r)return e;if(!e)return[];let i=r.toLowerCase().trim();return e.filter(o=>o.blog_title.toLowerCase().trim().includes(i)||o.tag.some(a=>a.toLowerCase().trim().includes(i)))}static \u0275fac=function(r){return new(r||t)};static \u0275pipe=n({name:"searchBlog",type:t,pure:!0,standalone:!0})};export{s as a};

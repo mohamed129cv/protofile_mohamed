@@ -1,0 +1,1 @@
+import{aa as i}from"./chunk-ZKSJM3UO.js";var o=class t{transform(e,r){return r.trim()?e.filter(a=>a.project_title.toLocaleLowerCase().trim().includes(r.toLocaleLowerCase().trim())):e}static \u0275fac=function(r){return new(r||t)};static \u0275pipe=i({name:"search",type:t,pure:!0,standalone:!0})};export{o as a};
