@@ -36,7 +36,7 @@ export class ProjectFormComponent {
 
     if (this.show && this.editMode && this.project) {
       setTimeout(() => {
-        this.enableEdit(this.project?.id || 0)
+        this.enableEdit()
       })
     }
   }
@@ -53,7 +53,7 @@ export class ProjectFormComponent {
   getProjects() {
     this._ProjectApiService.getAllProjects().subscribe({
       next: res => {
-        this.projcets = res.filter((pro: Iproject) => pro.status == 'active')
+        this.projcets = res
       }
     })
   }
@@ -314,10 +314,9 @@ export class ProjectFormComponent {
     }
   }
   //* التعديل علي مشروع
-  enableEdit(id: number) {
-    const project = this.projcets.find(pro => pro.id === id);
-    if (!project) return;
-
+  enableEdit() {
+    const project = this.project
+    if(!project) return
     this.eidtMode = true;
     this.clearControls()
     this.projectId = project.id;
